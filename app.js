@@ -125,15 +125,17 @@
   }
 
   /* ---------------- Shared chrome ---------------- */
-  function chrome({ lang = "glass", back = null, footer = true, onWhite = false } = {}) {
+  function chrome({ lang = "glass", back = null, footer = true, onWhite = false, logo: showLogo = true } = {}) {
     const c = state.content;
     const lg = onWhite && tx(c.brand.propertyLogoOnWhite) ? c.brand.propertyLogoOnWhite : c.brand.propertyLogo;
-    let h = `<button class="es-logo" data-act="home">${logo(lg, "EMBASSY SUITES", "")}</button>`;
+    let h = showLogo ? esLogo(lg) : "";
     h += `<button class="lang-btn ${lang}" data-act="lang">${icon("translate")}<span>${L("language")}</span></button>`;
     if (back) h += `<button class="back-btn ${back.outlined ? "outlined" : ""} ${back.cls || ""}" style="top:${back.top}px" data-act="back"><span class="chev">${icon("chevronLeft")}</span>${L("back")}</button>`;
     if (footer) h += footerHTML();
     return h;
   }
+
+  function esLogo(src) { return `<button class="es-logo" data-act="home">${logo(src, "EMBASSY SUITES", "")}</button>`; }
 
   function footerHTML() {
     const c = state.content;
@@ -320,7 +322,7 @@
       return `<div class="screen guide">
         <div class="guide-scroll">
           <div class="g-hero">${pic(p.hero)}<div class="shade"></div>
-            ${logo(p.logo, "Hilton", "g-logo")}
+            ${esLogo(state.content.brand.propertyLogo)}
             <div class="g-welcome">${T(p.welcome)}</div>
             <div class="g-title">${T(p.title)}</div>
           </div>
@@ -329,7 +331,7 @@
           <div class="g-end"></div>
         </div>
         <div class="footer-bg"></div>
-        ${chrome({ back: { top: 396 } })}
+        ${chrome({ lang: "dark", logo: false, back: { top: 121, cls: "fixed-right" } })}
       </div>`;
     }
   };
