@@ -398,6 +398,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    POP-UPS
    ========================================================= */
 .overlay { position: absolute; inset: 0; background: rgba(0,0,0,.6); z-index: 50; }
+/* offers / promotions: blur the page behind */
+.overlay.overlay-offers { -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
 .overlay.opening { animation: screenIn .3s ease both; }
 .overlay.opening .pop { animation: popIn .55s var(--ease-spring) both; }
 .overlay.opening .offers-pop .slide:not(.on) { animation: peekIn .6s var(--ease-out) .15s both; }

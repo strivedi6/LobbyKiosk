@@ -421,7 +421,7 @@
     if (!state.overlay) return "";
     const [kind, oid] = state.overlay;
     const inner = Popups[kind] ? Popups[kind](oid) : "";
-    return inner ? `<div class="overlay" data-act="close-bg">${inner}</div>` : "";
+    return inner ? `<div class="overlay overlay-${kind}" data-act="close-bg">${inner}</div>` : "";
   }
 
   function wireOverlay(ov, animate) {
