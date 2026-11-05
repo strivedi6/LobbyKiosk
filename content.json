@@ -1,4 +1,8 @@
 {
+  "settings": {
+    "defaultLanguage": "en",
+    "idleSeconds": 300
+  },
   "lang": "en",
   "homeAds": [
     {
