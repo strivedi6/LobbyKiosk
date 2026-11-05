@@ -576,9 +576,9 @@
     s.onchange = () => { setAt(path, s.value); markDirty(); };
     return s;
   }
-  function textInput(path, v, rtl) {
+  function textInput(path, v, rtl, area) {
     v = v || "";
-    const long = v.length > 60 || /\n/.test(v);
+    const long = area || v.length > 60 || /\n/.test(v);
     const i = long ? el("textarea", { rows: Math.min(10, Math.max(3, Math.ceil(v.length / 60) + (v.match(/\n/g) || []).length)) }) : el("input", { type: "text" });
     i.value = v;
     if (rtl) i.dir = "rtl";
@@ -586,8 +586,10 @@
     return i;
   }
   function biText(v, path) {
-    const en = textInput(path.concat("en"), v.en);
-    const ar = textInput(path.concat("ar"), v.ar, true);
+    // English and Arabic get the same box: if either side is multi-line, both can take line breaks
+    const multi = [v.en, v.ar].some((s) => s && (s.length > 60 || /\n/.test(s)));
+    const en = textInput(path.concat("en"), v.en, false, multi);
+    const ar = textInput(path.concat("ar"), v.ar, true, multi);
     ar.placeholder = "Arabic (English shows if empty)";
     const flag = () => ar.classList.toggle("empty-ar", !!(getAt(path.concat("en")) && !ar.value));
     flag(); ar.addEventListener("input", flag); en.addEventListener("input", flag);
