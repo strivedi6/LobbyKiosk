@@ -4,6 +4,17 @@
     "idleSeconds": 300
   },
   "lang": "en",
+  "home": {
+    "pillars": [
+      {"icon": "dining", "text": "Dining"},
+      {"icon": "rooms", "text": "Rooms"},
+      {"icon": "recreation", "text": "Recreation"},
+      {"icon": "meetings", "text": "Meetings"}
+    ],
+    "explore": "Explore our properties",
+    "start": "Start",
+    "tapText": "Tap to explore"
+  },
   "homeAds": [
     {
       "image": "assets/images/Home_Page_EN.png",
