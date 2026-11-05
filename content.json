@@ -63,6 +63,42 @@
     "email": "DXBAI_FB@hilton.com",
     "emailNote": "Send inquiry and we'll respond shortly"
   },
+  "labels": {
+    "en": {
+      "language": "Language",
+      "back": "Back",
+      "needHelp": "Need Help?",
+      "contactReception": "Contact Reception",
+      "home": "Home",
+      "viewMenu": "View Menu",
+      "makeReservation": "Make Reservation",
+      "viewOffers": "View Offers",
+      "bookNow": "Book Now",
+      "roomHighlights": "Highlights",
+      "callUs": "Call Us",
+      "chatWithUs": "Chat With Us",
+      "scanQr": "Scan QR Code",
+      "emailUs": "Email Us",
+      "emailNote": "Send inquiry and we'll respond shortly"
+    },
+    "ar": {
+      "language": "اللغة",
+      "back": "رجوع",
+      "needHelp": "هل تحتاج إلى مساعدة؟",
+      "contactReception": "اتصل بالاستقبال",
+      "home": "الصفحة الرئيسية",
+      "viewMenu": "عرض القائمة",
+      "makeReservation": "الحجز",
+      "viewOffers": "عرض العروض",
+      "bookNow": "احجز الآن",
+      "roomHighlights": "التفاصيل",
+      "callUs": "اتصل بنا",
+      "chatWithUs": "تواصل معنا",
+      "scanQr": "امسح رمز QR",
+      "emailUs": "راسلنا بالبريد الإلكتروني",
+      "emailNote": "أرسل استفسار وسنرد عليك في أقرب وقت"
+    }
+  },
   "strings": {
     "en": {
       "home": "Home",
