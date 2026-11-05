@@ -1,0 +1,19 @@
+# System files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+
+# Build & temp
+node_modules/
+*.tmp
+.env.local
+
+# Local dev
+server.py
+*.command

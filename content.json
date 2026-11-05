@@ -1,0 +1,79 @@
+{
+  "lang": "en",
+  "homeAds": [
+    {
+      "image": "assets/images/Home_Page_EN.png",
+      "title": "Welcome to Embassy Suites",
+      "link": "/"
+    }
+  ],
+  "pages": [
+    {
+      "name": "dining",
+      "icon": "dining",
+      "image": "assets/images/Dining_Page_EN.png",
+      "items": []
+    },
+    {
+      "name": "rooms",
+      "icon": "rooms",
+      "image": "assets/images/App_Page_EN.png",
+      "items": []
+    },
+    {
+      "name": "recreation",
+      "icon": "recreation",
+      "image": "assets/images/Recreation_Page_EN.png",
+      "items": []
+    },
+    {
+      "name": "meetings",
+      "icon": "meetings",
+      "image": "assets/images/Meetings__Events_EN.png",
+      "items": []
+    },
+    {
+      "name": "attractions",
+      "icon": "attractions",
+      "image": "assets/images/NEARBY_ATTRACTIONS_EN.png",
+      "items": []
+    }
+  ],
+  "contact": {
+    "phone": "+971 4 438 4971",
+    "extension": "EXT. 4500",
+    "callNote": "Speak to Concierge",
+    "whatsapp": "scan QR below",
+    "qrImage": "",
+    "email": "DXBAI_FB@hilton.com",
+    "emailNote": "Send inquiry and we'll respond shortly"
+  },
+  "strings": {
+    "en": {
+      "home": "Home",
+      "back": "Back",
+      "callUs": "Call Us",
+      "chatWithUs": "Chat With Us",
+      "emailUs": "Email Us",
+      "scanQr": "Scan QR Code",
+      "dining": "Dining",
+      "rooms": "Rooms",
+      "recreation": "Recreation",
+      "meetings": "Meetings & Events",
+      "attractions": "Nearby Attractions"
+    },
+    "ar": {
+      "home": "الصفحة الرئيسية",
+      "back": "رجوع",
+      "callUs": "اتصل بنا",
+      "chatWithUs": "تواصل معنا",
+      "emailUs": "راسلنا بالبريد الإلكتروني",
+      "scanQr": "امسح رمز QR",
+      "dining": "المطاعم",
+      "rooms": "الغرف",
+      "recreation": "الترفيه",
+      "meetings": "الاجتماعات والفعاليات",
+      "attractions": "المعالم القريبة"
+    }
+  }
+}

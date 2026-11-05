@@ -1,0 +1,25 @@
+{
+  "name": "DXBAI Lobby Kiosk",
+  "short_name": "Lobby Kiosk",
+  "description": "Embassy Suites Dubai Business Bay Lobby Information Kiosk",
+  "start_url": "/LobbyKiosk/",
+  "display": "fullscreen",
+  "orientation": "portrait-primary",
+  "scope": "/LobbyKiosk/",
+  "icons": [
+    {
+      "src": "assets/app-icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/app-icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "theme_color": "#0f2340",
+  "background_color": "#ffffff"
+}
