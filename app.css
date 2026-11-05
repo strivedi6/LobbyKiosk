@@ -30,7 +30,7 @@
   --cream: #F6F1EC;
   --cream-card: #F4F2EC;
   --cream-line: #EDD3B9;
-  --contact-highlight: #FF0004;   /* phone number color in the contact pop-ups */
+  --contact-highlight: var(--ink);   /* phone number color in the contact pop-ups */
   --white: #FFFFFF;
 
   --r-tile: 50px;
