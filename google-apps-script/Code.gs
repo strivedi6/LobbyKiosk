@@ -1,5 +1,5 @@
 const CONFIG = {
-  ADMIN_PIN: '1234',
+  ADMIN_PIN: '2468',
   SHEET_ID: PropertiesService.getScriptProperties().getProperty('SHEET_ID'),
 };
 
