@@ -36,8 +36,13 @@
       return local;
     },
     async version() {
-      const v = await fetchJSON("api/version?t=" + Date.now());
-      return v && v.version;
+      // Use content.json timestamp as version since GitHub Pages is static
+      try {
+        const resp = await fetch("content.json?t=" + Date.now(), { cache: "no-store" });
+        return resp.headers.get("last-modified") || Date.now().toString();
+      } catch (e) {
+        return Date.now().toString();
+      }
     }
   };
 
