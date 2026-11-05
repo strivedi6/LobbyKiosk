@@ -1,32 +1,38 @@
-if ('serviceWorker' in navigator && !window.location.pathname.includes('iframe')) {
-  navigator.serviceWorker.register('/LobbyKiosk/sw.js').catch(() => {});
-}
+/* Long-running kiosk helpers: offline cache, screen stays awake, full screen, nightly refresh. */
+(function () {
+  const params = new URLSearchParams(location.search);
+  if (params.has("preview") || window.self !== window.top) return; // not inside the admin preview
 
-if ('wakeLock' in navigator) {
-  let wakeLock = null;
-  async function acquire() {
-    try {
-      wakeLock = await navigator.wakeLock.request('screen');
-    } catch (e) {}
+  // 1. Offline cache (service worker)
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
   }
-  acquire();
-  document.addEventListener('visibilitychange', () => !document.hidden && acquire());
-}
 
-document.addEventListener('pointerdown', async () => {
-  if (document.fullscreenElement || navigator.standalone) return;
-  try {
-    await document.documentElement.requestFullscreen();
-  } catch (e) {}
-}, {once: true});
+  // 2. Keep the screen awake
+  let lock = null;
+  async function wake() {
+    try { if ("wakeLock" in navigator && !lock) { lock = await navigator.wakeLock.request("screen"); lock.addEventListener("release", () => { lock = null; }); } } catch (e) {}
+  }
+  wake();
+  document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") wake(); });
 
-if (navigator.serviceWorker?.controller) {
-  let lastActive = Date.now();
-  document.addEventListener('pointerdown', () => {lastActive = Date.now();});
-  document.addEventListener('keydown', () => {lastActive = Date.now();});
-  setInterval(() => {
-    if (Date.now() - lastActive > 2*60*60*1000 && Date.now() % 86400000 > 4*60*60*1000) {
-      location.reload();
+  // 3. Full screen: the installed app opens full screen by itself.
+  //    In a normal Chrome tab, the first touch switches to full screen.
+  const installed = matchMedia("(display-mode: fullscreen)").matches || matchMedia("(display-mode: standalone)").matches;
+  function goFull() {
+    wake();
+    if (!installed && !document.fullscreenElement && document.documentElement.requestFullscreen) {
+      document.documentElement.requestFullscreen({ navigationUI: "hide" }).catch(() => {});
     }
-  }, 5*60*1000);
-}
+  }
+  document.addEventListener("pointerdown", goFull, { capture: true });
+
+  // 4. Fresh start every night (around 4 AM) to keep memory clean over weeks of running.
+  let lastTouch = Date.now();
+  document.addEventListener("pointerdown", () => { lastTouch = Date.now(); }, { capture: true });
+  const started = Date.now();
+  setInterval(() => {
+    const h = new Date().getHours();
+    if (h === 4 && Date.now() - started > 2 * 3600e3 && Date.now() - lastTouch > 5 * 60e3 && navigator.onLine) location.reload();
+  }, 60e3);
+})();

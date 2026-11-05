@@ -1,130 +1,3755 @@
 {
+  "_about": "All kiosk text and images live in this file. Edit it through admin.html, not by hand.",
   "settings": {
-    "defaultLanguage": "en",
-    "idleSeconds": 300
+    "idleSeconds": 90,
+    "adImageSeconds": 8,
+    "checkMinutes": 1,
+    "defaultLanguage": "en"
   },
-  "lang": "en",
-  "home": {
-    "pillars": [
-      {"icon": "dining", "text": "Dining"},
-      {"icon": "rooms", "text": "Rooms"},
-      {"icon": "recreation", "text": "Recreation"},
-      {"icon": "meetings", "text": "Meetings"}
-    ],
-    "explore": "Explore our properties",
-    "start": "Start",
-    "tapText": "Tap to explore"
-  },
-  "homeAds": [
-    {
-      "image": "assets/images/Home_Page_EN.png",
-      "title": "Welcome to Embassy Suites",
-      "link": "/"
-    }
-  ],
-  "pages": [
-    {
-      "name": "dining",
-      "icon": "dining",
-      "image": "assets/images/Dining_Page_EN.png",
-      "items": []
-    },
-    {
-      "name": "rooms",
-      "icon": "rooms",
-      "image": "assets/images/App_Page_EN.png",
-      "items": []
-    },
-    {
-      "name": "recreation",
-      "icon": "recreation",
-      "image": "assets/images/Recreation_Page_EN.png",
-      "items": []
-    },
-    {
-      "name": "meetings",
-      "icon": "meetings",
-      "image": "assets/images/Meetings__Events_EN.png",
-      "items": []
-    },
-    {
-      "name": "attractions",
-      "icon": "attractions",
-      "image": "assets/images/NEARBY_ATTRACTIONS_EN.png",
-      "items": []
-    }
-  ],
-  "contact": {
-    "phone": "+971 4 438 4971",
-    "extension": "EXT. 4500",
-    "callNote": "Speak to Concierge",
-    "whatsapp": "scan QR below",
-    "qrImage": "",
-    "email": "DXBAI_FB@hilton.com",
-    "emailNote": "Send inquiry and we'll respond shortly"
+  "brand": {
+    "propertyLogo": "assets/brand/embassy-suites-logo.svg",
+    "footerLogo": "assets/brand/hilton-for-the-stay.png",
+    "propertyLogoOnWhite": "assets/brand/embassy-suites-logo-teal.svg"
   },
   "labels": {
-    "en": {
-      "language": "Language",
-      "back": "Back",
-      "needHelp": "Need Help?",
-      "contactReception": "Contact Reception",
-      "home": "Home",
-      "viewMenu": "View Menu",
-      "makeReservation": "Make Reservation",
-      "viewOffers": "View Offers",
-      "bookNow": "Book Now",
-      "roomHighlights": "Highlights",
-      "callUs": "Call Us",
-      "chatWithUs": "Chat With Us",
-      "scanQr": "Scan QR Code",
-      "emailUs": "Email Us",
-      "emailNote": "Send inquiry and we'll respond shortly"
+    "language": {
+      "en": "العربية",
+      "ar": "English"
     },
-    "ar": {
-      "language": "اللغة",
-      "back": "رجوع",
-      "needHelp": "هل تحتاج إلى مساعدة؟",
-      "contactReception": "اتصل بالاستقبال",
-      "home": "الصفحة الرئيسية",
-      "viewMenu": "عرض القائمة",
-      "makeReservation": "الحجز",
-      "viewOffers": "عرض العروض",
-      "bookNow": "احجز الآن",
-      "roomHighlights": "التفاصيل",
-      "callUs": "اتصل بنا",
-      "chatWithUs": "تواصل معنا",
-      "scanQr": "امسح رمز QR",
-      "emailUs": "راسلنا بالبريد الإلكتروني",
-      "emailNote": "أرسل استفسار وسنرد عليك في أقرب وقت"
+    "back": {
+      "en": "Back",
+      "ar": "رجوع"
+    },
+    "home": {
+      "en": "Home",
+      "ar": "الرئيسية"
+    },
+    "needHelp": {
+      "en": "Need Help?",
+      "ar": "هل تحتاجون إلى مساعدة؟"
+    },
+    "contactReception": {
+      "en": "Contact Reception",
+      "ar": "تواصلوا مع مكتب الاستقبال"
+    },
+    "viewMenu": {
+      "en": "View Menu",
+      "ar": "عرض القائمة"
+    },
+    "makeReservation": {
+      "en": "Make a Reservation",
+      "ar": "احجز طاولتك"
+    },
+    "viewOffers": {
+      "en": "View Offers & Promotions",
+      "ar": "عرض العروض"
+    },
+    "bookNow": {
+      "en": "Book Now",
+      "ar": "احجز الآن"
+    },
+    "openDaily": {
+      "en": "Open Daily",
+      "ar": "مفتوح يومياً"
+    },
+    "location": {
+      "en": "Location",
+      "ar": "الموقع"
+    },
+    "cuisine": {
+      "en": "Cuisine",
+      "ar": "المطبخ"
+    },
+    "perfectFor": {
+      "en": "Perfect For",
+      "ar": "مثالي لـ"
+    },
+    "roomHighlights": {
+      "en": "Room Highlights",
+      "ar": "مزايا الغرفة"
+    },
+    "callUs": {
+      "en": "Call Us Directly",
+      "ar": "اتصلوا بنا مباشرة"
+    },
+    "chatWithUs": {
+      "en": "Chat With Us",
+      "ar": "تواصلوا معنا"
+    },
+    "emailUs": {
+      "en": "Email Us",
+      "ar": "راسلونا عبر البريد الإلكتروني"
+    },
+    "scanQr": {
+      "en": "Scan the QR code to start a conversation.",
+      "ar": "امسحوا رمز QR لبدء المحادثة."
+    },
+    "emailNote": {
+      "en": "Send us your inquiry and we'll get back to you shortly.",
+      "ar": "أرسلوا استفساركم وسنعاود التواصل معكم قريباً."
+    },
+    "moreInformation": {
+      "en": "More Information",
+      "ar": "مزيد من المعلومات"
+    },
+    "distanceFromHotel": {
+      "en": "Distance from Hotel",
+      "ar": "المسافة من الفندق"
+    },
+    "openingTime": {
+      "en": "Opening Time",
+      "ar": "ساعات العمل"
     }
   },
-  "strings": {
-    "en": {
-      "home": "Home",
-      "back": "Back",
-      "callUs": "Call Us",
-      "chatWithUs": "Chat With Us",
-      "emailUs": "Email Us",
-      "scanQr": "Scan QR Code",
-      "dining": "Dining",
-      "rooms": "Rooms",
-      "recreation": "Recreation",
-      "meetings": "Meetings & Events",
-      "attractions": "Nearby Attractions"
+  "home": {
+    "explore": {
+      "en": "Explore our hotel",
+      "ar": "استكشف فندقنا"
     },
-    "ar": {
-      "home": "الصفحة الرئيسية",
-      "back": "رجوع",
-      "callUs": "اتصل بنا",
-      "chatWithUs": "تواصل معنا",
-      "emailUs": "راسلنا بالبريد الإلكتروني",
-      "scanQr": "امسح رمز QR",
-      "dining": "المطاعم",
-      "rooms": "الغرف",
-      "recreation": "الترفيه",
-      "meetings": "الاجتماعات والفعاليات",
-      "attractions": "المعالم القريبة"
+    "start": {
+      "en": "Start here",
+      "ar": "ابدأ من هنا"
+    },
+    "tapText": {
+      "en": "Tap to discover dining, experiences, facilities, offers & more",
+      "ar": "انقر لاكتشاف خيارات الطعام، والتجارب،\nوالمرافق، والعروض، والمزيد."
+    },
+    "pillars": [
+      {
+        "icon": "cutlery",
+        "text": {
+          "en": "Eat\nWell",
+          "ar": "تناول طعاماً صحياً"
+        }
+      },
+      {
+        "icon": "bed",
+        "text": {
+          "en": "Stay\nComfortably",
+          "ar": "أقم براحة"
+        }
+      },
+      {
+        "icon": "lotus",
+        "text": {
+          "en": "Explore\nMore",
+          "ar": "اكتشف المزيد"
+        }
+      },
+      {
+        "icon": "family",
+        "text": {
+          "en": "Create\nMemories",
+          "ar": "اصنع ذكريات"
+        }
+      }
+    ]
+  },
+  "ads": [
+    {
+      "active": true,
+      "type": "image",
+      "src": {
+        "en": "assets/ads/rio-happy-hour-en.jpg",
+        "ar": "assets/ads/rio-happy-hour-ar.jpg"
+      },
+      "seconds": 0,
+      "target": ""
+    },
+    {
+      "active": true,
+      "type": "image",
+      "src": {
+        "en": "assets/ads/ad-02.jpg",
+        "ar": ""
+      },
+      "seconds": 0,
+      "target": ""
+    },
+    {
+      "active": true,
+      "type": "image",
+      "src": {
+        "en": "assets/ads/ad-03.jpg",
+        "ar": ""
+      },
+      "seconds": 0,
+      "target": ""
+    },
+    {
+      "active": false,
+      "type": "video",
+      "src": {
+        "en": "assets/ads/sample-video.mp4",
+        "ar": ""
+      },
+      "seconds": 0,
+      "target": ""
     }
+  ],
+  "menu": {
+    "background": "assets/images/menu/background.jpg",
+    "welcome": {
+      "en": "Welcome",
+      "ar": "مرحباً بكم"
+    },
+    "headline": {
+      "en": "Your Suite Experience\nStarts Here",
+      "ar": "تبدأ تجربتكم في\nدبي من هنا"
+    },
+    "tiles": [
+      {
+        "target": "dining",
+        "icon": "cutlery",
+        "image": "assets/images/menu/tile-dining.jpg",
+        "title": {
+          "en": "Dining",
+          "ar": "المطاعم والمقاهي"
+        },
+        "subtitle": {
+          "en": "Great food brings\npeople together",
+          "ar": "الطعام الشهي\nيجمعنا"
+        }
+      },
+      {
+        "target": "recreation",
+        "icon": "swim",
+        "image": "assets/images/menu/tile-recreation.jpg",
+        "title": {
+          "en": "Recreation",
+          "ar": "الترفيه والاستجمام"
+        },
+        "subtitle": {
+          "en": "Relax, refresh\nand recharge",
+          "ar": "استرخِ، انتعش واستعد\nنشاطك"
+        }
+      },
+      {
+        "target": "rooms",
+        "icon": "bed",
+        "image": "assets/images/menu/tile-rooms.jpg",
+        "title": {
+          "en": "Rooms & Suites",
+          "ar": "الغرف والأجنحة"
+        },
+        "subtitle": {
+          "en": "A comfortable stay\nfor every journey",
+          "ar": "إقامة مريحة لكل\nرحلة"
+        }
+      },
+      {
+        "target": "meetings",
+        "icon": "meeting",
+        "image": "assets/images/menu/tile-meetings.jpg",
+        "title": {
+          "en": "Meetings & Events",
+          "ar": "الاجتماعات والفعاليات"
+        },
+        "subtitle": {
+          "en": "Bring your next\noccasion to life",
+          "ar": "اجعل مناسبتك القادمة\nتنبض بالحياة"
+        }
+      },
+      {
+        "target": "family",
+        "icon": "family",
+        "image": "assets/images/menu/tile-family.jpg",
+        "title": {
+          "en": "Family Experience",
+          "ar": "تجارب العائلة"
+        },
+        "subtitle": {
+          "en": "More moments\nto enjoy together",
+          "ar": "المزيد من اللحظات\nللاستمتاع معاً"
+        }
+      },
+      {
+        "target": "nearby",
+        "icon": "landmark",
+        "image": "assets/images/menu/tile-nearby.jpg",
+        "title": {
+          "en": "Nearby Attractions",
+          "ar": "المعالم السياحية القريبة"
+        },
+        "subtitle": {
+          "en": "Discover Dubai\nbeyond the hotel",
+          "ar": "اكتشفوا دبي خارج\nالفندق"
+        }
+      }
+    ]
+  },
+  "pages": {
+    "dining": {
+      "template": "list",
+      "cardStyle": "venue",
+      "background": "assets/images/dining/background.jpg",
+      "title": {
+        "en": "Dining",
+        "ar": "المطاعم والمقاهي"
+      },
+      "headline": {
+        "en": "Great Food Brings People Together",
+        "ar": "الطعام الشهي يجمعنا"
+      },
+      "text": {
+        "en": "From relaxed dining to vibrant moments, our restaurants and cafes offer something for every taste, any time of the day.",
+        "ar": "من تجارب الطعام الهادئة إلى اللحظات المفعمة بالحيوية، تقدم مطاعمنا ومقاهينا خيارات متنوعة ترضي جميع الأذواق في أي وقت من اليوم."
+      },
+      "items": [
+        {
+          "target": "gourmet-yard",
+          "image": "assets/images/dining/gourmet-yard-card.jpg",
+          "logo": "assets/brand/gourmet-yard-logo-dark.svg",
+          "title": {
+            "en": "The Gourmet Yard",
+            "ar": ""
+          },
+          "tagline": {
+            "en": "Social dining, redefined",
+            "ar": ""
+          },
+          "text": {
+            "en": "A contemporary space serving international flavors in a stylish and inviting setting.",
+            "ar": ""
+          },
+          "meta": [
+            {
+              "icon": "clock",
+              "text": {
+                "en": "6:30 AM - 11:00 PM",
+                "ar": ""
+              }
+            },
+            {
+              "icon": "pin",
+              "text": {
+                "en": "Ground Floor (Lobby)",
+                "ar": "الطابق الأرضي (الردهة)"
+              }
+            }
+          ]
+        },
+        {
+          "target": "rio",
+          "image": "assets/images/dining/rio-card.jpg",
+          "logo": "assets/brand/rio-logo-dark.svg",
+          "title": {
+            "en": "Rio Restaurant & Lounge",
+            "ar": ""
+          },
+          "tagline": {
+            "en": "Good food. Great views.",
+            "ar": "طعام شهي. إطلالات رائعة."
+          },
+          "text": {
+            "en": "Savor delicious dishes and refreshing beverages at our vibrant poolside restaurant and lounge.",
+            "ar": "استمتعوا بأشهى المأكولات والمشروبات المنعشة في مطعمنا وصالتنا النابضة بالحيوية بجانب المسبح."
+          },
+          "meta": [
+            {
+              "icon": "clock",
+              "text": {
+                "en": "11:30 AM - 01:00 AM",
+                "ar": "11:30 صباحاً – 01:00 صباحاً"
+              }
+            },
+            {
+              "icon": "pin",
+              "text": {
+                "en": "3rd Floor (P3)",
+                "ar": "الطابق الثالث (P3)"
+              }
+            }
+          ]
+        },
+        {
+          "target": "drip",
+          "image": "assets/images/dining/drip-card.jpg",
+          "logo": "assets/brand/drip-logo-dark.svg",
+          "title": {
+            "en": "The Drip Café",
+            "ar": ""
+          },
+          "tagline": {
+            "en": "Good days start here",
+            "ar": "الأيام الجميلة تبدأ من هنا"
+          },
+          "text": {
+            "en": "Your daily essentials, specialty coffee and freshly made bites, available around the clock.",
+            "ar": "احتياجاتكم اليومية، وقهوتنا المختصة، والوجبات الخفيفة الطازجة متوفرة على مدار الساعة."
+          },
+          "meta": [
+            {
+              "icon": "clock",
+              "text": {
+                "en": "24 Hrs",
+                "ar": "على مدار 24 ساعة"
+              }
+            },
+            {
+              "icon": "pin",
+              "text": {
+                "en": "Ground Floor (Lobby)",
+                "ar": "الطابق الأرضي (الردهة)"
+              }
+            }
+          ]
+        },
+        {
+          "target": "jones",
+          "image": "assets/images/dining/jones-card.jpg",
+          "logo": "assets/brand/jones-logo-dark.svg",
+          "title": {
+            "en": "Jones Social",
+            "ar": ""
+          },
+          "tagline": {
+            "en": "Cosmopolitan bar & eaterie",
+            "ar": "بار ومطعم كوزموبوليتان"
+          },
+          "text": {
+            "en": "Crafted food, curated cocktails, live music.\nAll under one roof.",
+            "ar": "مأكولات مميزة، كوكتيلات مختارة بعناية، وموسيقى حية. كل ذلك تحت سقف واحد."
+          },
+          "meta": [
+            {
+              "icon": "clock",
+              "text": {
+                "en": "01:00 PM - 12:00 AM",
+                "ar": "01:00 ظهراً – 12:00 صباحاً"
+              }
+            },
+            {
+              "icon": "pin",
+              "text": {
+                "en": "Ground Floor (Lobby)",
+                "ar": "الطابق الأرضي (الردهة)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "gourmet-yard": {
+      "template": "venue",
+      "name": {
+        "en": "The Gourmet Yard",
+        "ar": ""
+      },
+      "hero": "assets/images/dining/gourmet-yard-hero.jpg",
+      "heroLogo": "assets/brand/gourmet-yard-logo-white.svg",
+      "headline": {
+        "en": "Private dining, made memorable",
+        "ar": "تجربة طعام خاصة لا تُنسى"
+      },
+      "text": {
+        "en": "A warm and versatile dining space designed for celebrations, gatherings and special occasions. Enjoy delicious cuisine, personalized service and an atmosphere made for bringing people together.",
+        "ar": "مساحة دافئة ومتعددة الاستخدامات، مصممة للاحتفالات والتجمعات والمناسبات الخاصة. استمتعوا بأشهى المأكولات، وخدمة مميزة، وأجواء مثالية لقضاء أجمل اللحظات معاً."
+      },
+      "info": [
+        {
+          "icon": "clock",
+          "label": {
+            "en": "Open Daily",
+            "ar": "مفتوح يومياً"
+          },
+          "value": {
+            "en": "6:30 AM – 11:00 PM",
+            "ar": "6:30 صباحاً – 11:00 مساءً"
+          }
+        },
+        {
+          "icon": "pin",
+          "label": {
+            "en": "Location",
+            "ar": "الموقع"
+          },
+          "value": {
+            "en": "Ground Floor (Lobby)",
+            "ar": "الطابق الأرضي (الردهة)"
+          }
+        },
+        {
+          "icon": "cloche",
+          "label": {
+            "en": "Cuisine",
+            "ar": "المطبخ"
+          },
+          "value": {
+            "en": "International",
+            "ar": "عالمي"
+          }
+        }
+      ],
+      "menuImages": [
+        "assets/images/dining/gourmet-yard-menu-1.jpg"
+      ],
+      "reservationContact": "gourmet-yard",
+      "offers": "dining-offers",
+      "gallery": [
+        "assets/images/dining/gourmet-yard-photo-01.jpg",
+        "assets/images/dining/gourmet-yard-photo-02.jpg",
+        "assets/images/dining/gourmet-yard-photo-03.jpg",
+        "assets/images/dining/gourmet-yard-photo-04.jpg",
+        "assets/images/dining/gourmet-yard-photo-05.jpg",
+        "assets/images/dining/gourmet-yard-photo-06.jpg"
+      ],
+      "banner": {
+        "image": {
+          "en": "assets/images/banners/dine-like-a-member-en.jpg",
+          "ar": "assets/images/banners/dine-like-a-member-ar.jpg"
+        },
+        "target": ""
+      }
+    },
+    "rio": {
+      "template": "venue",
+      "name": {
+        "en": "Rio Restaurant & Lounge",
+        "ar": ""
+      },
+      "hero": "assets/images/dining/rio-hero.jpg",
+      "heroLogo": "assets/brand/rio-logo-white.svg",
+      "headline": {
+        "en": "Good food. Great views.",
+        "ar": "طعام شهي. إطلالات رائعة."
+      },
+      "text": {
+        "en": "A vibrant poolside restaurant and lounge offering delicious dishes, refreshing beverages and a relaxed setting for every occasion. Unwind by the pool, enjoy great flavors and make the most of every moment.",
+        "ar": "مطعم وصالة نابضان بالحيوية بجانب المسبح، يقدمان أشهى المأكولات والمشروبات المنعشة في أجواء مريحة تناسب جميع المناسبات. استرخوا بجانب المسبح، واستمتعوا بالنكهات المميزة واجعلوا كل لحظة استثنائية."
+      },
+      "info": [
+        {
+          "icon": "clock",
+          "label": {
+            "en": "Open Daily",
+            "ar": "مفتوح يومياً"
+          },
+          "value": {
+            "en": "11:30 AM – 01:00 AM",
+            "ar": "11:30 صباحاً – 01:00 صباحاً"
+          }
+        },
+        {
+          "icon": "pin",
+          "label": {
+            "en": "Location",
+            "ar": "الموقع"
+          },
+          "value": {
+            "en": "3rd Floor (P3)",
+            "ar": "الطابق الثالث (P3)"
+          }
+        },
+        {
+          "icon": "cloche",
+          "label": {
+            "en": "Cuisine",
+            "ar": "المطبخ"
+          },
+          "value": {
+            "en": "Mediterranean",
+            "ar": "متوسطي"
+          }
+        }
+      ],
+      "menuImages": [
+        "assets/images/dining/rio-menu-1.jpg"
+      ],
+      "reservationContact": "rio",
+      "offers": "dining-offers",
+      "gallery": [
+        "assets/images/dining/rio-photo-01.jpg",
+        "assets/images/dining/rio-photo-02.jpg",
+        "assets/images/dining/rio-photo-03.jpg",
+        "assets/images/dining/rio-photo-04.jpg",
+        "assets/images/dining/rio-photo-05.jpg",
+        "assets/images/dining/rio-photo-06.jpg"
+      ],
+      "banner": {
+        "image": {
+          "en": "assets/images/banners/dine-like-a-member-en.jpg",
+          "ar": "assets/images/banners/dine-like-a-member-ar.jpg"
+        },
+        "target": ""
+      }
+    },
+    "drip": {
+      "template": "venue",
+      "name": {
+        "en": "The Drip Café",
+        "ar": ""
+      },
+      "hero": "assets/images/dining/drip-hero.jpg",
+      "heroLogo": "assets/brand/drip-logo-white.svg",
+      "headline": {
+        "en": "Good coffee. Good moments.",
+        "ar": "قهوة مميزة. لحظات جميلة."
+      },
+      "text": {
+        "en": "A relaxed café serving specialty coffee, freshly made bites and everyday favorites in a warm and welcoming setting. Whether you're starting your day or taking a well-deserved break.",
+        "ar": "مقهى مريح يقدم القهوة المختصة، والوجبات الخفيفة الطازجة، والمفضلات اليومية في أجواء دافئة وترحيبية. سواء كنتم تبدؤون يومكم أو تأخذون استراحة تستحقونها، فإن ذا دريب كافيه هو المكان المثالي للاسترخاء واستعادة النشاط والاستمتاع."
+      },
+      "info": [
+        {
+          "icon": "clock",
+          "label": {
+            "en": "Open Daily",
+            "ar": "مفتوح يومياً"
+          },
+          "value": {
+            "en": "24 Hrs",
+            "ar": "على مدار 24 ساعة"
+          }
+        },
+        {
+          "icon": "pin",
+          "label": {
+            "en": "Location",
+            "ar": "الموقع"
+          },
+          "value": {
+            "en": "Ground Floor (Lobby)",
+            "ar": "الطابق الأرضي (الردهة)"
+          }
+        },
+        {
+          "icon": "cloche",
+          "label": {
+            "en": "Cuisine",
+            "ar": "المطبخ"
+          },
+          "value": {
+            "en": "Café & Light Bites",
+            "ar": "مقهى ووجبات خفيفة"
+          }
+        }
+      ],
+      "menuImages": [
+        "assets/images/dining/drip-menu-1.jpg"
+      ],
+      "reservationContact": "drip",
+      "offers": "dining-offers",
+      "gallery": [
+        "assets/images/dining/drip-photo-01.jpg",
+        "assets/images/dining/drip-photo-02.jpg",
+        "assets/images/dining/drip-photo-03.jpg",
+        "assets/images/dining/drip-photo-04.jpg",
+        "assets/images/dining/drip-photo-05.jpg",
+        "assets/images/dining/drip-photo-06.jpg"
+      ],
+      "banner": {
+        "image": {
+          "en": "assets/images/banners/dine-like-a-member-en.jpg",
+          "ar": "assets/images/banners/dine-like-a-member-ar.jpg"
+        },
+        "target": ""
+      },
+      "secondButton": "moreInfo"
+    },
+    "jones": {
+      "template": "venue",
+      "name": {
+        "en": "Jones Social",
+        "ar": ""
+      },
+      "hero": "assets/images/dining/jones-hero.jpg",
+      "heroLogo": "assets/brand/jones-logo-white.svg",
+      "headline": {
+        "en": "Good food. Good vibes. Great nights.",
+        "ar": "طعام شهي. أجواء رائعة. وليال لا تُنسى."
+      },
+      "text": {
+        "en": "From laid-back lunches to energetic evenings with live DJs, Jones Social brings together great food, music and Dubai's cosmopolitan energy under one roof.",
+        "ar": "من وجبات الغداء الهادئة إلى الأمسيات المفعمة بالطاقة مع عروض الـDJ الحية، يجمع Jones Social بين الطعام المميز والموسيقى وأجواء دبي العصرية تحت سقف واحد."
+      },
+      "info": [
+        {
+          "icon": "clock",
+          "label": {
+            "en": "Open Daily",
+            "ar": "مفتوح يومياً"
+          },
+          "value": {
+            "en": "1:00 PM – 12:00 AM",
+            "ar": "01:00 ظهراً – 12:00 صباحاً"
+          }
+        },
+        {
+          "icon": "pin",
+          "label": {
+            "en": "Location",
+            "ar": "الموقع"
+          },
+          "value": {
+            "en": "Ground Floor (Lobby)",
+            "ar": "الطابق الأرضي (الردهة)"
+          }
+        },
+        {
+          "icon": "cloche",
+          "label": {
+            "en": "Cuisine",
+            "ar": "المطبخ"
+          },
+          "value": {
+            "en": "Mediterranean",
+            "ar": "متوسطي"
+          }
+        }
+      ],
+      "menuImages": [
+        "assets/images/dining/jones-menu-1.jpg"
+      ],
+      "reservationContact": "jones",
+      "offers": "dining-offers",
+      "gallery": [
+        "assets/images/dining/jones-photo-01.jpg",
+        "assets/images/dining/jones-photo-02.jpg",
+        "assets/images/dining/jones-photo-03.jpg",
+        "assets/images/dining/jones-photo-04.jpg",
+        "assets/images/dining/jones-photo-05.jpg",
+        "assets/images/dining/jones-photo-06.jpg"
+      ],
+      "banner": {
+        "image": {
+          "en": "assets/images/banners/dine-like-a-member-en.jpg",
+          "ar": "assets/images/banners/dine-like-a-member-ar.jpg"
+        },
+        "target": ""
+      }
+    },
+    "recreation": {
+      "template": "list",
+      "cardStyle": "feature",
+      "background": "assets/images/recreation/background.jpg",
+      "title": {
+        "en": "Recreation",
+        "ar": "الترفيه والاستجمام"
+      },
+      "headline": {
+        "en": "Relax • Refresh • Recharge",
+        "ar": "استرخِ • انتعش • استعد نشاطك"
+      },
+      "text": {
+        "en": "Take time for what makes you feel good. Explore our recreational facilities designed for relaxation, wellness and family fun.",
+        "ar": "خذوا وقتاً للاسترخاء والاستمتاع. اكتشفوا مرافقنا الترفيهية المصممة للراحة والعافية والمرح لجميع أفراد العائلة."
+      },
+      "items": [
+        {
+          "target": "pool",
+          "image": "assets/images/recreation/pool-card.jpg",
+          "logo": "",
+          "title": {
+            "en": "OUTDOOR\nSWIMMING POOL",
+            "ar": "المسبح\nالخارجي"
+          },
+          "tagline": {
+            "en": "",
+            "ar": ""
+          },
+          "text": {
+            "en": "Take a refreshing dip or simply unwind by the pool with stunning views of the Dubai skyline.",
+            "ar": ""
+          },
+          "meta": [
+            {
+              "icon": "clock",
+              "text": {
+                "en": "7:00 AM - 7:00 PM",
+                "ar": "7:00 صباحاً – 7:00 مساءً"
+              }
+            },
+            {
+              "icon": "pin",
+              "text": {
+                "en": "3rd Floor (P3)",
+                "ar": "الطابق الثالث (P3)"
+              }
+            }
+          ]
+        },
+        {
+          "target": "gym",
+          "image": "assets/images/recreation/gym-card.jpg",
+          "logo": "",
+          "title": {
+            "en": "FITNESS\nCENTRE",
+            "ar": "مركز اللياقة\nالبدنية"
+          },
+          "tagline": {
+            "en": "",
+            "ar": ""
+          },
+          "text": {
+            "en": "Keep up with your routine in our fully equipped, 24-hour fitness center featuring modern cardio and strength equipment.",
+            "ar": "حافظوا على روتينكم الرياضي في مركز اللياقة البدنية المجهز بالكامل، والمتاح على مدار 24 ساعة، مع أحدث معدات تمارين الكارديو والقوة."
+          },
+          "meta": [
+            {
+              "icon": "clock",
+              "text": {
+                "en": "24 Hrs",
+                "ar": "على مدار 24 ساعة"
+              }
+            },
+            {
+              "icon": "pin",
+              "text": {
+                "en": "3rd Floor (P3)",
+                "ar": "الطابق الثالث (P3)"
+              }
+            }
+          ]
+        },
+        {
+          "target": "spa",
+          "image": "assets/images/recreation/spa-card.jpg",
+          "logo": "",
+          "title": {
+            "en": "DREAMWORKS\nSPA",
+            "ar": "سبا دريم\nووركس"
+          },
+          "tagline": {
+            "en": "",
+            "ar": ""
+          },
+          "text": {
+            "en": "Indulge in a range of rejuvenating treatments and therapies, designed to refresh your body and mind.",
+            "ar": "استمتعوا بمجموعة من العلاجات والجلسات المجددة للنشاط، المصممة لمنح الجسم والعقل شعوراً بالانتعاش والاسترخاء."
+          },
+          "meta": [
+            {
+              "icon": "clock",
+              "text": {
+                "en": "12:00 PM – 10:00 PM",
+                "ar": "12:00 ظهراً – 10:00 مساءً"
+              }
+            },
+            {
+              "icon": "pin",
+              "text": {
+                "en": "3rd Floor (P3)",
+                "ar": "الطابق الثالث (P3)"
+              }
+            }
+          ]
+        },
+        {
+          "target": "kids-play",
+          "image": "assets/images/recreation/kids-play-card.jpg",
+          "logo": "",
+          "title": {
+            "en": "KIDS\nPLAY AREA",
+            "ar": "منطقة\nألعاب الأطفال"
+          },
+          "tagline": {
+            "en": "",
+            "ar": ""
+          },
+          "text": {
+            "en": "A safe and fun space for our youngest guests to play, explore and make new friends. Enjoy indoor and outdoor play areas.",
+            "ar": "مساحة آمنة وممتعة لضيوفنا الصغار للعب والاستكشاف وتكوين صداقات جديدة، مع مناطق للعب الداخلية والخارجية."
+          },
+          "meta": [
+            {
+              "icon": "clock",
+              "text": {
+                "en": "7:00 AM - 7:00 PM",
+                "ar": "7:00 صباحاً – 7:00 مساءً"
+              }
+            },
+            {
+              "icon": "pin",
+              "text": {
+                "en": "3rd Floor (P3)",
+                "ar": "الطابق الثالث (P3)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "pool": {
+      "template": "facility",
+      "hero": "assets/images/recreation/pool-hero.jpg",
+      "title": {
+        "en": "OUTDOOR\nSWIMMING POOL",
+        "ar": "المسبح\nالخارجي"
+      },
+      "headline": {
+        "en": "Soak up the good times",
+        "ar": "استمتعوا بأجمل الأوقات"
+      },
+      "text": {
+        "en": "Take a refreshing dip or simply unwind by the pool with stunning views of the Dubai skyline. Whether you're enjoying a leisurely swim or soaking up the sun, it's the perfect spot to relax, recharge and enjoy your day.",
+        "ar": "استمتعوا بالسباحة أو استرخوا بجانب المسبح مع إطلالات خلابة على أفق دبي. سواء كنتم تستمتعون بسباحة هادئة أو بأشعة الشمس، فهو المكان المثالي للاسترخاء واستعادة النشاط والاستمتاع بيومكم."
+      },
+      "info": [
+        {
+          "icon": "clock",
+          "label": {
+            "en": "Open Daily",
+            "ar": "مفتوح يومياً"
+          },
+          "value": {
+            "en": "7:00 AM – 7:00 PM",
+            "ar": "7:00 صباحاً – 7:00 مساءً"
+          }
+        },
+        {
+          "icon": "pin",
+          "label": {
+            "en": "Location",
+            "ar": "الموقع"
+          },
+          "value": {
+            "en": "3rd Floor (P3)",
+            "ar": "الطابق الثالث (P3)"
+          }
+        },
+        {
+          "icon": "family",
+          "label": {
+            "en": "Perfect for",
+            "ar": "مثالي"
+          },
+          "value": {
+            "en": "Families",
+            "ar": "للعائلات"
+          }
+        }
+      ],
+      "photos": [
+        "assets/images/recreation/pool-photo-01.jpg",
+        "assets/images/recreation/pool-photo-02.jpg",
+        "assets/images/recreation/pool-photo-03.jpg"
+      ],
+      "features": [
+        {
+          "icon": "swim",
+          "title": {
+            "en": "Refresh & Swim",
+            "ar": "انتعش واستمتع بالسباحة"
+          },
+          "text": {
+            "en": "Take a refreshing dip in our inviting outdoor pool.",
+            "ar": "استمتعوا بسباحة منعشة في مسبحنا الخارجي المميز."
+          }
+        },
+        {
+          "icon": "lounger",
+          "title": {
+            "en": "Relax Poolside",
+            "ar": "استرخِ بجانب المسبح"
+          },
+          "text": {
+            "en": "Unwind in comfort while soaking up the Dubai sunshine.",
+            "ar": "استمتعوا بالراحة وأشعة شمس دبي بجانب المسبح."
+          }
+        },
+        {
+          "icon": "shower",
+          "title": {
+            "en": "Freshen Up",
+            "ar": "انتعش واستعد نشاطك"
+          },
+          "text": {
+            "en": "Enjoy convenient changing rooms and refreshing showers.",
+            "ar": "تتوفر غرف تغيير الملابس ودش للاستحمام لراحتكم."
+          }
+        },
+        {
+          "icon": "towel",
+          "title": {
+            "en": "Towels Provided",
+            "ar": "مناشف متوفرة"
+          },
+          "text": {
+            "en": "Pool towels are conveniently available in the pool area.",
+            "ar": "تتوفر مناشف المسبح بسهولة في منطقة المسبح."
+          }
+        }
+      ],
+      "banner": {
+        "image": {
+          "en": "assets/images/banners/pool-banner-en.jpg",
+          "ar": "assets/images/banners/pool-banner-ar.jpg"
+        },
+        "target": "offers:pool-combo"
+      }
+    },
+    "gym": {
+      "template": "facility",
+      "hero": "assets/images/recreation/gym-hero.jpg",
+      "title": {
+        "en": "FITNESS\nCENTRE",
+        "ar": "مركز اللياقة\nالبدنية"
+      },
+      "headline": {
+        "en": "Train • Move • Recharge",
+        "ar": "تدرّب • تحرّك • جدد نشاطك"
+      },
+      "text": {
+        "en": "Keep up with your routine in our fully equipped fitness center, featuring modern cardio and strength equipment in a comfortable space designed to keep you moving.",
+        "ar": "حافظوا على روتينكم الرياضي في مركز اللياقة البدنية المجهز بالكامل، والذي يضم أحدث معدات تمارين الكارديو والقوة في مساحة مريحة مصممة لتبقيكم في نشاط وحيوية."
+      },
+      "info": [
+        {
+          "icon": "clock",
+          "label": {
+            "en": "Open Daily",
+            "ar": "مفتوح يومياً"
+          },
+          "value": {
+            "en": "24 Hrs",
+            "ar": "على مدار 24 ساعة"
+          }
+        },
+        {
+          "icon": "pin",
+          "label": {
+            "en": "Location",
+            "ar": "الموقع"
+          },
+          "value": {
+            "en": "3rd Floor (P3)",
+            "ar": "الطابق الثالث (P3)"
+          }
+        },
+        {
+          "icon": "dumbbell",
+          "label": {
+            "en": "Perfect for",
+            "ar": "مثالي لـ"
+          },
+          "value": {
+            "en": "Fitness & Wellness",
+            "ar": "اللياقة والعافية"
+          }
+        }
+      ],
+      "photos": [
+        "assets/images/recreation/gym-photo-01.jpg",
+        "assets/images/recreation/gym-photo-02.jpg",
+        "assets/images/recreation/gym-photo-03.jpg"
+      ],
+      "features": [
+        {
+          "icon": "dumbbell",
+          "title": {
+            "en": "Cardio & Strength",
+            "ar": "كارديو وتمارين القوة"
+          },
+          "text": {
+            "en": "Modern equipment to support your cardio and strength training.",
+            "ar": "معدات حديثة لتمارين الكارديو والقوة وتحقيق أهدافكم الرياضية."
+          }
+        },
+        {
+          "icon": "run",
+          "title": {
+            "en": "Train Your Way",
+            "ar": "تدرّب بطريقتك"
+          },
+          "text": {
+            "en": "Choose your pace and enjoy a workout that suits your routine.",
+            "ar": "اختاروا الوتيرة المناسبة لكم واستمتعوا بتمرين يتناسب مع روتينكم."
+          }
+        },
+        {
+          "icon": "clock",
+          "title": {
+            "en": "Always On",
+            "ar": "متاح دائماً"
+          },
+          "text": {
+            "en": "With 24-hour access, your workout can fit into any schedule.",
+            "ar": "مع إمكانية الدخول على مدار 24 ساعة، يمكنكم ممارسة التمارين في أي وقت يناسبكم."
+          }
+        },
+        {
+          "icon": "run",
+          "title": {
+            "en": "Stay on Track",
+            "ar": "حافظ على نشاطك"
+          },
+          "text": {
+            "en": "Stay active throughout your stay and keep your fitness routine going.",
+            "ar": "حافظوا على نشاطكم طوال فترة إقامتكم واستمروا في روتينكم الرياضي."
+          }
+        }
+      ],
+      "banner": {
+        "image": {
+          "en": "assets/images/banners/pool-banner-en.jpg",
+          "ar": "assets/images/banners/pool-banner-ar.jpg"
+        },
+        "target": "offers:pool-combo"
+      }
+    },
+    "spa": {
+      "template": "facility",
+      "hero": "assets/images/recreation/spa-hero.jpg",
+      "title": {
+        "en": "DREAMWORKS\nSPA",
+        "ar": "سبا دريم\nووركس"
+      },
+      "headline": {
+        "en": "Renew • Relax • Rejuvenate",
+        "ar": "جدد نشاطك • استرخِ • استعد حيويتك"
+      },
+      "text": {
+        "en": "Escape the everyday and take time to reconnect with yourself. Discover soothing treatments and a tranquil setting designed to relax your body, refresh your mind and restore your sense of wellbeing.",
+        "ar": "ابتعدوا عن صخب الحياة اليومية وخذوا وقتاً للاهتمام بأنفسكم. اكتشفوا علاجات مريحة وأجواء هادئة مصممة للاسترخاء وتجديد نشاط الجسم وإنعاش العقل واستعادة الشعور بالعافية."
+      },
+      "info": [
+        {
+          "icon": "clock",
+          "label": {
+            "en": "Open Daily",
+            "ar": "مفتوح يومياً"
+          },
+          "value": {
+            "en": "12:00 PM – 10:00 PM",
+            "ar": "12:00 ظهراً – 10:00 مساءً"
+          }
+        },
+        {
+          "icon": "pin",
+          "label": {
+            "en": "Location",
+            "ar": "الموقع"
+          },
+          "value": {
+            "en": "3rd Floor (P3)",
+            "ar": "الطابق الثالث (P3)"
+          }
+        },
+        {
+          "icon": "people",
+          "label": {
+            "en": "Perfect for",
+            "ar": "مثالي لـ"
+          },
+          "value": {
+            "en": "Relaxation & Wellness",
+            "ar": "الاسترخاء والعافية"
+          }
+        }
+      ],
+      "photos": [
+        "assets/images/recreation/spa-photo-01.jpg",
+        "assets/images/recreation/spa-photo-02.jpg",
+        "assets/images/recreation/spa-photo-03.jpg"
+      ],
+      "features": [
+        {
+          "icon": "lotus",
+          "title": {
+            "en": "Relax & Unwind",
+            "ar": "استرخِ واستمتع"
+          },
+          "text": {
+            "en": "Ease into a peaceful experience designed to calm body and mind.",
+            "ar": "استمتعوا بتجربة هادئة تساعد على راحة الجسم وصفاء الذهن."
+          }
+        },
+        {
+          "icon": "star",
+          "title": {
+            "en": "Rejuvenating",
+            "ar": "علاجات مجددة للنشاط"
+          },
+          "text": {
+            "en": "Enjoy soothing treatments created to refresh and restore your wellbeing.",
+            "ar": "استمتعوا بعلاجات مريحة تساعد على تجديد النشاط واستعادة العافية."
+          }
+        },
+        {
+          "icon": "lotus",
+          "title": {
+            "en": "Peaceful Escape",
+            "ar": "ملاذ هادئ"
+          },
+          "text": {
+            "en": "Step away from the everyday and enjoy a tranquil moment for yourself.",
+            "ar": "ابتعدوا عن صخب الحياة واستمتعوا بلحظات هادئة خاصة بكم."
+          }
+        },
+        {
+          "icon": "star",
+          "title": {
+            "en": "Feel Refreshed",
+            "ar": "شعور متجدد"
+          },
+          "text": {
+            "en": "Leave feeling relaxed, renewed and ready to embrace the rest of your day.",
+            "ar": "غادروا وأنتم تشعرون بالاسترخاء والتجدد والاستعداد لبقية يومكم."
+          }
+        }
+      ],
+      "banner": {
+        "image": {
+          "en": "assets/images/banners/pool-banner-en.jpg",
+          "ar": "assets/images/banners/pool-banner-ar.jpg"
+        },
+        "target": "offers:pool-combo"
+      }
+    },
+    "kids-play": {
+      "template": "facility",
+      "hero": "assets/images/recreation/kids-play-hero.jpg",
+      "title": {
+        "en": "KIDS PLAY\nAREA",
+        "ar": "منطقة\nألعاب الأطفال"
+      },
+      "headline": {
+        "en": "Play • Explore • Discover",
+        "ar": "العب • استكشف • اكتشف"
+      },
+      "text": {
+        "en": "Let little imaginations run free in our dedicated indoor and outdoor play areas. From exciting play spaces to creative adventures, children can have fun, explore and make happy memories throughout their stay.",
+        "ar": "دعوا خيال أطفالكم ينطلق في مناطق اللعب الداخلية والخارجية المخصصة لهم. من مساحات اللعب الممتعة إلى المغامرات الإبداعية، يمكن للأطفال الاستمتاع واللعب والاستكشاف وصنع أجمل الذكريات خلال إقامتهم."
+      },
+      "info": [
+        {
+          "icon": "clock",
+          "label": {
+            "en": "Open Daily",
+            "ar": "مفتوح يومياً"
+          },
+          "value": {
+            "en": "10:00 AM – 10:00 PM",
+            "ar": "10:00 صباحاً – 10:00 مساءً"
+          }
+        },
+        {
+          "icon": "pin",
+          "label": {
+            "en": "Location",
+            "ar": "الموقع"
+          },
+          "value": {
+            "en": "3rd Floor (P3)",
+            "ar": "الطابق الثالث (P3)"
+          }
+        },
+        {
+          "icon": "landmark",
+          "label": {
+            "en": "Play areas",
+            "ar": "مناطق لعب"
+          },
+          "value": {
+            "en": "INDOOR & OUTDOOR",
+            "ar": "داخلي وخارجي"
+          }
+        }
+      ],
+      "photos": [
+        "assets/images/recreation/kids-play-photo-01.jpg",
+        "assets/images/recreation/kids-play-photo-02.jpg",
+        "assets/images/recreation/kids-play-photo-03.jpg"
+      ],
+      "features": [
+        {
+          "icon": "home",
+          "title": {
+            "en": "Indoor Play",
+            "ar": "اللعب الداخلي"
+          },
+          "text": {
+            "en": "A colorful indoor space filled with fun activities for little explorers.",
+            "ar": "مساحة داخلية مليئة بالألوان والأنشطة الممتعة للصغار."
+          }
+        },
+        {
+          "icon": "star",
+          "title": {
+            "en": "Outdoor Adventures",
+            "ar": "مغامرات خارجية"
+          },
+          "text": {
+            "en": "Enjoy fresh air, active play and exciting outdoor adventures.",
+            "ar": "استمتعوا بالهواء الطلق واللعب النشط والمغامرات الممتعة."
+          }
+        },
+        {
+          "icon": "people",
+          "title": {
+            "en": "Fun for Little Guests",
+            "ar": "متعة لضيوفنا الصغار"
+          },
+          "text": {
+            "en": "A playful environment where children can explore, play and make friends.",
+            "ar": "أجواء مرحة تتيح للأطفال اللعب والاستكشاف وتكوين صداقات جديدة."
+          }
+        },
+        {
+          "icon": "family",
+          "title": {
+            "en": "Happy Family Moments",
+            "ar": "لحظات عائلية سعيدة"
+          },
+          "text": {
+            "en": "Let the little ones play while you enjoy quality family time.",
+            "ar": "دعوا الصغار يستمتعون باللعب واقضوا معاً أجمل اللحظات العائلية."
+          }
+        }
+      ],
+      "banner": {
+        "image": {
+          "en": "assets/images/banners/pool-banner-en.jpg",
+          "ar": "assets/images/banners/pool-banner-ar.jpg"
+        },
+        "target": "offers:pool-combo"
+      }
+    },
+    "rooms": {
+      "template": "list",
+      "cardStyle": "feature",
+      "background": "assets/images/rooms/background.jpg",
+      "title": {
+        "en": "ROOMS & SUITES",
+        "ar": "الغرف والأجنحة"
+      },
+      "headline": {
+        "en": "Relax • Refresh • Recharge",
+        "ar": "استرخِ • انتعش • استعد نشاطك"
+      },
+      "text": {
+        "en": "Take time for what makes you feel good. Explore our recreational facilities designed for relaxation, wellness and family fun.",
+        "ar": "خذوا وقتاً للاسترخاء والاستمتاع. اكتشفوا مرافقنا الترفيهية المصممة للراحة والعافية والمرح لجميع أفراد العائلة."
+      },
+      "items": [
+        {
+          "target": "king-guest-room",
+          "image": "assets/images/rooms/king-guest-room-card.jpg",
+          "logo": "",
+          "title": {
+            "en": "KING GUEST ROOM",
+            "ar": "غرفة ضيوف بسرير كينغ"
+          },
+          "tagline": {
+            "en": "",
+            "ar": ""
+          },
+          "text": {
+            "en": "A plush king bed, contemporary interiors and thoughtful amenities.",
+            "ar": ""
+          },
+          "meta": [
+            {
+              "icon": "view",
+              "text": {
+                "en": "City View",
+                "ar": "إطلالة على المدينة"
+              }
+            },
+            {
+              "icon": "size",
+              "text": {
+                "en": "34 sq. m.",
+                "ar": "34 مترًا مربعًا"
+              }
+            }
+          ]
+        },
+        {
+          "target": "two-double-beds-one-bedroom-suite",
+          "image": "assets/images/rooms/two-double-beds-one-bedroom-suite-card.jpg",
+          "logo": "",
+          "title": {
+            "en": "TWO DOUBLE BEDS\nONE BEDROOM SUITE",
+            "ar": "جناح بغرفة نوم واحدة\nوسريرين مزدوجين"
+          },
+          "tagline": {
+            "en": "",
+            "ar": ""
+          },
+          "text": {
+            "en": "Enjoy the freedom of spacious one-bedroom suite living with captivating Burj Khalifa views.",
+            "ar": "استمتع بمساحة واسعة في جناح بغرفة نوم واحدة مع إطلالات آسرة على برج خليفة."
+          },
+          "meta": [
+            {
+              "icon": "view",
+              "text": {
+                "en": "Burj Khalifa View",
+                "ar": "إطلالة على برج خليفة"
+              }
+            },
+            {
+              "icon": "size",
+              "text": {
+                "en": "49 sq. m.",
+                "ar": "49 مترًا مربعًا"
+              }
+            }
+          ]
+        },
+        {
+          "target": "king-superior-one-bedroom-suite",
+          "image": "assets/images/rooms/king-superior-one-bedroom-suite-card.jpg",
+          "logo": "",
+          "title": {
+            "en": "KING SUPERIOR\nONE BEDROOM SUITE",
+            "ar": "جناح سوبيريور بغرفة نوم\nواحدة وسرير كينغ"
+          },
+          "tagline": {
+            "en": "",
+            "ar": ""
+          },
+          "text": {
+            "en": "Stretch out in a spacious one-bedroom suite designed for a more comfortable and flexible stay.",
+            "ar": "استمتع بمساحة رحبة في جناح مكوّن من غرفة نوم واحدة، مصمم لإقامة أكثر راحة ومرونة."
+          },
+          "meta": [
+            {
+              "icon": "view",
+              "text": {
+                "en": "City View",
+                "ar": "إطلالة على المدينة"
+              }
+            },
+            {
+              "icon": "size",
+              "text": {
+                "en": "49 sq. m.",
+                "ar": "49 مترًا مربعًا"
+              }
+            }
+          ]
+        },
+        {
+          "target": "king-superior-one-bedroom-suite-burj-view",
+          "image": "assets/images/rooms/king-superior-one-bedroom-suite-burj-view-card.jpg",
+          "logo": "",
+          "title": {
+            "en": "KING SUPERIOR\nONE BEDROOM SUITE",
+            "ar": "جناح سوبيريور بغرفة نوم\nواحدة وسرير كينغ"
+          },
+          "tagline": {
+            "en": "",
+            "ar": ""
+          },
+          "text": {
+            "en": "Experience spacious suite living with beautiful views toward the iconic Burj Khalifa.",
+            "ar": "استمتع بإقامة رحبة في جناح سوبيريور مع إطلالات جميلة على برج خليفة الشهير."
+          },
+          "meta": [
+            {
+              "icon": "view",
+              "text": {
+                "en": "Burj Khalifa View",
+                "ar": "إطلالة على برج خليفة"
+              }
+            },
+            {
+              "icon": "size",
+              "text": {
+                "en": "49 sq. m.",
+                "ar": "49 مترًا مربعًا"
+              }
+            }
+          ]
+        },
+        {
+          "target": "king-corner-room-burj-khalifa-view",
+          "image": "assets/images/rooms/king-corner-room-burj-khalifa-view-card.jpg",
+          "logo": "",
+          "title": {
+            "en": "KING CORNER ROOM\nWITH BURJ KHALIFA VIEW",
+            "ar": "غرفة كينغ زاوية بإطلالة\nعلى برج خليفة"
+          },
+          "tagline": {
+            "en": "",
+            "ar": ""
+          },
+          "text": {
+            "en": "Wake up to expansive views of Dubai from the comfort of your stylish corner room.",
+            "ar": "استيقظ على إطلالات واسعة على دبي من راحة غرفتك الزاوية الأنيقة."
+          },
+          "meta": [
+            {
+              "icon": "view",
+              "text": {
+                "en": "Burj Khalifa View",
+                "ar": "إطلالة على برج خليفة"
+              }
+            },
+            {
+              "icon": "size",
+              "text": {
+                "en": "37 sq. m.",
+                "ar": "37 مترًا مربعًا"
+              }
+            }
+          ]
+        },
+        {
+          "target": "two-bedroom-suite-burj-khalifa-view",
+          "image": "assets/images/rooms/two-bedroom-suite-burj-khalifa-view-card.jpg",
+          "logo": "",
+          "title": {
+            "en": "TWO BEDROOM\nSUITE",
+            "ar": "جناح كينغ بغرفتي نوم"
+          },
+          "tagline": {
+            "en": "",
+            "ar": ""
+          },
+          "text": {
+            "en": "Make yourself at home in a spacious two-bedroom suite designed for families and groups seeking comfort and privacy.",
+            "ar": "اشعر وكأنك في منزلك في جناح واسع بغرفتي نوم، مصمم للعائلات والمجموعات الباحثة عن الراحة والخصوصية."
+          },
+          "meta": [
+            {
+              "icon": "view",
+              "text": {
+                "en": "Burj Khalifa View",
+                "ar": "إطلالة على برج خليفة"
+              }
+            },
+            {
+              "icon": "size",
+              "text": {
+                "en": "49 sq. m.",
+                "ar": "49 مترًا مربعًا"
+              }
+            }
+          ]
+        },
+        {
+          "target": "king-one-bedroom-suite-kitchenette",
+          "image": "assets/images/rooms/king-one-bedroom-suite-kitchenette-card.jpg",
+          "logo": "",
+          "title": {
+            "en": "KING ONE BEDROOM\nSUITE WITH KITCHENETTE",
+            "ar": "جناح كينغ بغرفة نوم\nواحدة مع مطبخ صغير"
+          },
+          "tagline": {
+            "en": "",
+            "ar": ""
+          },
+          "text": {
+            "en": "Enjoy spacious suite living with a king bed, separate living area and convenient kitchenette for added flexibility.",
+            "ar": "استمتع بجناح واسع يضم غرفة نوم كينغ ومنطقة معيشة منفصلة ومطبخًا صغيرًا لمزيد من المرونة."
+          },
+          "meta": [
+            {
+              "icon": "view",
+              "text": {
+                "en": "Burj Khalifa View",
+                "ar": "إطلالة على برج خليفة"
+              }
+            },
+            {
+              "icon": "size",
+              "text": {
+                "en": "60 sq. m.",
+                "ar": "60 مترًا مربعًا"
+              }
+            }
+          ]
+        },
+        {
+          "target": "queen-accessible-guest-room",
+          "image": "assets/images/rooms/queen-accessible-guest-room-card.jpg",
+          "logo": "",
+          "title": {
+            "en": "QUEEN ACCESSIBLE\nGUEST ROOM",
+            "ar": ""
+          },
+          "tagline": {
+            "en": "",
+            "ar": ""
+          },
+          "text": {
+            "en": "Enjoy a comfortable guest room with accessible features, contemporary design and thoughtful amenities for a seamless stay.",
+            "ar": "استمتع بغرفة مريحة مع تجهيزات ملائمة وسهولة وصول، وتصميم عصري ووسائل راحة مدروسة."
+          },
+          "meta": [
+            {
+              "icon": "view",
+              "text": {
+                "en": "City View",
+                "ar": "إطلالة على المدينة"
+              }
+            },
+            {
+              "icon": "size",
+              "text": {
+                "en": "34 sq. m.",
+                "ar": "34 مترًا مربعًا"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "king-guest-room": {
+      "template": "room",
+      "gallery": [
+        "assets/images/rooms/king-guest-room-01.jpg",
+        "assets/images/rooms/king-guest-room-02.jpg",
+        "assets/images/rooms/king-guest-room-03.jpg",
+        "assets/images/rooms/king-guest-room-04.jpg"
+      ],
+      "title": {
+        "en": "King Guest Room",
+        "ar": "غرفة ضيوف بسرير كينغ"
+      },
+      "bookContact": "rooms",
+      "text": {
+        "en": "Settle into a stylish and comfortable space designed for a relaxing stay in the heart of Business Bay. Enjoy a plush king bed, contemporary interiors, and thoughtful amenities for effortless comfort. With Dubai’s vibrant cityscape at your doorstep, it is an ideal choice for both business and leisure stays.",
+        "ar": "استمتع بإقامة مريحة في مساحة أنيقة مصممة للاسترخاء في قلب الخليج التجاري. تتميز الغرفة بسرير كينغ مريح، وتصميم عصري، ووسائل راحة مدروسة لتوفير إقامة سلسة ومريحة. ومع أجواء دبي الحيوية على مقربة منك، فهي خيار مثالي للإقامات بغرض العمل أو الترفيه."
+      },
+      "highlights": [
+        {
+          "icon": "guests",
+          "title": {
+            "en": "Guests",
+            "ar": "الضيوف"
+          },
+          "items": [
+            {
+              "en": "Sleeps Two",
+              "ar": "يتسع لشخصين"
+            }
+          ]
+        },
+        {
+          "icon": "view",
+          "title": {
+            "en": "Views",
+            "ar": "الإطلالات"
+          },
+          "items": [
+            {
+              "en": "City View",
+              "ar": "إطلالة على المدينة"
+            }
+          ]
+        },
+        {
+          "icon": "kitchen",
+          "title": {
+            "en": "Kitchen & Dining",
+            "ar": "المطبخ وتناول الطعام"
+          },
+          "items": [
+            {
+              "en": "Minibar",
+              "ar": "ميني بار"
+            }
+          ]
+        },
+        {
+          "icon": "layout",
+          "title": {
+            "en": "Room Layout",
+            "ar": "تصميم الغرفة"
+          },
+          "items": [
+            {
+              "en": "Workspace",
+              "ar": "مساحة للعمل"
+            }
+          ]
+        },
+        {
+          "icon": "bath",
+          "title": {
+            "en": "Bathroom",
+            "ar": "الحمّام"
+          },
+          "items": [
+            {
+              "en": "Rain Shower",
+              "ar": "دش مطري"
+            },
+            {
+              "en": "Separate Bathtub",
+              "ar": "حوض استحمام منفصل"
+            },
+            {
+              "en": "Separate Shower",
+              "ar": "دش منفصل"
+            }
+          ]
+        }
+      ],
+      "usps": [
+        {
+          "icon": "breakfast",
+          "text": {
+            "en": "Made-to-order\nbreakfast",
+            "ar": "إفطار يُحضّر\nحسب الطلب"
+          }
+        },
+        {
+          "icon": "cocktail",
+          "text": {
+            "en": "Complimentary\nevening reception",
+            "ar": "استقبال مسائي\nمجاني"
+          }
+        },
+        {
+          "icon": "size",
+          "text": {
+            "en": "34 sq. m.\n365 sq. ft",
+            "ar": "34 مترًا مربعًا\n365 قدمًا مربعًا"
+          }
+        }
+      ]
+    },
+    "two-double-beds-one-bedroom-suite": {
+      "template": "room",
+      "gallery": [
+        "assets/images/rooms/two-double-beds-one-bedroom-suite-01.jpg",
+        "assets/images/rooms/two-double-beds-one-bedroom-suite-02.jpg",
+        "assets/images/rooms/two-double-beds-one-bedroom-suite-03.jpg",
+        "assets/images/rooms/two-double-beds-one-bedroom-suite-04.jpg"
+      ],
+      "title": {
+        "en": "Two Double Beds\nOne Bedroom Suite",
+        "ar": "جناح بغرفة نوم واحدة\nوسريرين مزدوجين"
+      },
+      "bookContact": "rooms",
+      "text": {
+        "en": "Enjoy the freedom of spacious one-bedroom suite living with captivating Burj Khalifa views. Two double beds and a separate living area offer flexibility and comfort for families and groups. A smart choice for those seeking extra space, city views, and the convenience of a well-appointed suite.",
+        "ar": "استمتع بمساحة واسعة في جناح بغرفة نوم واحدة مع إطلالات آسرة على برج خليفة. يوفر السريران المزدوجان ومنطقة المعيشة المنفصلة مرونة وراحة مثالية للعائلات والمجموعات. خيار مثالي لمن يبحثون عن مساحة إضافية وإطلالات على المدينة وراحة الإقامة في جناح مجهز بعناية."
+      },
+      "highlights": [
+        {
+          "icon": "guests",
+          "title": {
+            "en": "Guests",
+            "ar": "الضيوف"
+          },
+          "items": [
+            {
+              "en": "Sleeps Three",
+              "ar": "يتسع لثلاثة أشخاص"
+            }
+          ]
+        },
+        {
+          "icon": "view",
+          "title": {
+            "en": "Views",
+            "ar": "الإطلالات"
+          },
+          "items": [
+            {
+              "en": "Burj Khalifa View",
+              "ar": "إطلالة على برج خليفة"
+            }
+          ]
+        },
+        {
+          "icon": "kitchen",
+          "title": {
+            "en": "Kitchen & Dining",
+            "ar": "المطبخ وتناول الطعام"
+          },
+          "items": [
+            {
+              "en": "Minibar",
+              "ar": "ميني بار"
+            }
+          ]
+        },
+        {
+          "icon": "layout",
+          "title": {
+            "en": "Room Layout",
+            "ar": "تصميم الغرفة"
+          },
+          "items": [
+            {
+              "en": "Living Area",
+              "ar": "منطقة معيشة"
+            },
+            {
+              "en": "Separated Bedroom & Living Spaces",
+              "ar": "غرفة نوم ومنطقة معيشة منفصلتان"
+            },
+            {
+              "en": "Workspace",
+              "ar": "مساحة للعمل"
+            }
+          ]
+        },
+        {
+          "icon": "bath",
+          "title": {
+            "en": "Bathroom",
+            "ar": "الحمّام"
+          },
+          "items": [
+            {
+              "en": "Rain Shower",
+              "ar": "دش مطري"
+            },
+            {
+              "en": "Separate Bathtub",
+              "ar": "حوض استحمام منفصل"
+            },
+            {
+              "en": "Separate Shower",
+              "ar": "دش منفصل"
+            }
+          ]
+        },
+        {
+          "icon": "sofa",
+          "title": {
+            "en": "Room Feature",
+            "ar": "مزايا الغرفة"
+          },
+          "items": [
+            {
+              "en": "Sofa",
+              "ar": "أريكة"
+            },
+            {
+              "en": "Sofa Bed",
+              "ar": "أريكة سرير"
+            }
+          ]
+        }
+      ],
+      "usps": [
+        {
+          "icon": "breakfast",
+          "text": {
+            "en": "Made-to-order\nbreakfast",
+            "ar": "إفطار يُحضّر\nحسب الطلب"
+          }
+        },
+        {
+          "icon": "cocktail",
+          "text": {
+            "en": "Complimentary\nevening reception",
+            "ar": "استقبال مسائي\nمجاني"
+          }
+        },
+        {
+          "icon": "size",
+          "text": {
+            "en": "49 sq. m.\n527 sq. ft",
+            "ar": "49 مترًا مربعًا\n527 قدمًا مربعًا"
+          }
+        }
+      ]
+    },
+    "king-superior-one-bedroom-suite": {
+      "template": "room",
+      "gallery": [
+        "assets/images/rooms/king-superior-one-bedroom-suite-01.jpg",
+        "assets/images/rooms/king-superior-one-bedroom-suite-02.jpg",
+        "assets/images/rooms/king-superior-one-bedroom-suite-03.jpg",
+        "assets/images/rooms/king-superior-one-bedroom-suite-04.jpg"
+      ],
+      "title": {
+        "en": "King Superior\nOne Bedroom Suite",
+        "ar": "جناح سوبيريور بغرفة نوم\nواحدة وسرير كينغ"
+      },
+      "bookContact": "rooms",
+      "text": {
+        "en": "Stretch out in a spacious one-bedroom suite designed for a more comfortable and flexible stay. A separate living area, king bed, and sofa bed provide the space you need to relax, work, or unwind. Ideal for couples, families, or extended stays seeking the added comfort of a true suite experience.",
+        "ar": "استمتع بمساحة رحبة في جناح مكوّن من غرفة نوم واحدة، مصمم لإقامة أكثر راحة ومرونة. تضم الوحدة منطقة معيشة منفصلة، وسرير كينغ، وأريكة سرير توفر مساحة مثالية للاسترخاء أو العمل. خيار مثالي للأزواج والعائلات والإقامات الطويلة الباحثة عن تجربة جناح متكاملة ومريحة."
+      },
+      "highlights": [
+        {
+          "icon": "guests",
+          "title": {
+            "en": "Guests",
+            "ar": "الضيوف"
+          },
+          "items": [
+            {
+              "en": "Sleeps Four",
+              "ar": "يتسع لأربعة أشخاص"
+            }
+          ]
+        },
+        {
+          "icon": "view",
+          "title": {
+            "en": "Views",
+            "ar": "الإطلالات"
+          },
+          "items": [
+            {
+              "en": "City View",
+              "ar": "إطلالة على المدينة"
+            }
+          ]
+        },
+        {
+          "icon": "kitchen",
+          "title": {
+            "en": "Kitchen & Dining",
+            "ar": "المطبخ وتناول الطعام"
+          },
+          "items": [
+            {
+              "en": "Minibar",
+              "ar": "ميني بار"
+            }
+          ]
+        },
+        {
+          "icon": "layout",
+          "title": {
+            "en": "Room Layout",
+            "ar": "تصميم الغرفة"
+          },
+          "items": [
+            {
+              "en": "Living Area",
+              "ar": "منطقة معيشة"
+            },
+            {
+              "en": "Separated Bedroom & Living Spaces",
+              "ar": "غرفة نوم ومنطقة معيشة منفصلتان"
+            },
+            {
+              "en": "Workspace",
+              "ar": "مساحة للعمل"
+            }
+          ]
+        },
+        {
+          "icon": "bath",
+          "title": {
+            "en": "Bathroom",
+            "ar": "الحمّام"
+          },
+          "items": [
+            {
+              "en": "Dual Vanity",
+              "ar": "مغسلتان منفصلتان"
+            },
+            {
+              "en": "Rain Shower",
+              "ar": "دش مطري"
+            },
+            {
+              "en": "Separate Bathtub",
+              "ar": "حوض استحمام منفصل"
+            },
+            {
+              "en": "Separate Shower",
+              "ar": "دش منفصل"
+            }
+          ]
+        },
+        {
+          "icon": "sofa",
+          "title": {
+            "en": "Room Feature",
+            "ar": "مزايا الغرفة"
+          },
+          "items": [
+            {
+              "en": "Sofa",
+              "ar": "أريكة"
+            },
+            {
+              "en": "Sofa Bed",
+              "ar": "أريكة سرير"
+            }
+          ]
+        }
+      ],
+      "usps": [
+        {
+          "icon": "breakfast",
+          "text": {
+            "en": "Made-to-order\nbreakfast",
+            "ar": "إفطار يُحضّر\nحسب الطلب"
+          }
+        },
+        {
+          "icon": "cocktail",
+          "text": {
+            "en": "Complimentary\nevening reception",
+            "ar": "استقبال مسائي\nمجاني"
+          }
+        },
+        {
+          "icon": "size",
+          "text": {
+            "en": "49 sq. m.\n527 sq. ft",
+            "ar": "49 مترًا مربعًا\n527 قدمًا مربعًا"
+          }
+        }
+      ]
+    },
+    "king-superior-one-bedroom-suite-burj-view": {
+      "template": "room",
+      "gallery": [
+        "assets/images/rooms/king-superior-one-bedroom-suite-burj-view-01.jpg",
+        "assets/images/rooms/king-superior-one-bedroom-suite-burj-view-02.jpg",
+        "assets/images/rooms/king-superior-one-bedroom-suite-burj-view-03.jpg",
+        "assets/images/rooms/king-superior-one-bedroom-suite-burj-view-04.jpg"
+      ],
+      "title": {
+        "en": "King Superior\nOne Bedroom Suite",
+        "ar": "جناح سوبيريور بغرفة نوم\nواحدة وسرير كينغ"
+      },
+      "bookContact": "rooms",
+      "text": {
+        "en": "Experience spacious suite living with beautiful views toward the iconic Burj Khalifa. Relax in a dedicated bedroom with a king bed and enjoy additional living space designed for comfort and flexibility. Perfect for families, couples, or longer stays looking to combine city views with elevated suite living.",
+        "ar": "استمتع بإقامة رحبة في جناح سوبيريور مع إطلالات جميلة على برج خليفة الشهير. استرخِ في غرفة نوم مستقلة مزودة بسرير كينغ، واستمتع بمساحة معيشة إضافية مصممة لتوفير الراحة والمرونة. مثالي للعائلات والأزواج والإقامات الطويلة الباحثة عن إطلالات مميزة وتجربة إقامة راقية في جناح واسع."
+      },
+      "highlights": [
+        {
+          "icon": "guests",
+          "title": {
+            "en": "Guests",
+            "ar": "الضيوف"
+          },
+          "items": [
+            {
+              "en": "Sleeps Four",
+              "ar": "يتسع لأربعة أشخاص"
+            }
+          ]
+        },
+        {
+          "icon": "view",
+          "title": {
+            "en": "Views",
+            "ar": "الإطلالات"
+          },
+          "items": [
+            {
+              "en": "Burj Khalifa View",
+              "ar": "إطلالة على برج خليفة"
+            }
+          ]
+        },
+        {
+          "icon": "kitchen",
+          "title": {
+            "en": "Kitchen & Dining",
+            "ar": "المطبخ وتناول الطعام"
+          },
+          "items": [
+            {
+              "en": "Minibar",
+              "ar": "ميني بار"
+            }
+          ]
+        },
+        {
+          "icon": "layout",
+          "title": {
+            "en": "Room Layout",
+            "ar": "تصميم الغرفة"
+          },
+          "items": [
+            {
+              "en": "Living Area",
+              "ar": "منطقة معيشة"
+            },
+            {
+              "en": "Separated Bedroom & Living Spaces",
+              "ar": "غرفة نوم ومنطقة معيشة منفصلتان"
+            },
+            {
+              "en": "Workspace",
+              "ar": "مساحة للعمل"
+            }
+          ]
+        },
+        {
+          "icon": "bath",
+          "title": {
+            "en": "Bathroom",
+            "ar": "الحمّام"
+          },
+          "items": [
+            {
+              "en": "Dual Vanity",
+              "ar": "مغسلتان منفصلتان"
+            },
+            {
+              "en": "Rain Shower",
+              "ar": "دش مطري"
+            },
+            {
+              "en": "Separate Bathtub",
+              "ar": "حوض استحمام منفصل"
+            },
+            {
+              "en": "Separate Shower",
+              "ar": "دش منفصل"
+            }
+          ]
+        },
+        {
+          "icon": "sofa",
+          "title": {
+            "en": "Room Feature",
+            "ar": "مزايا الغرفة"
+          },
+          "items": [
+            {
+              "en": "Sofa",
+              "ar": "أريكة"
+            },
+            {
+              "en": "Sofa Bed",
+              "ar": "أريكة سرير"
+            }
+          ]
+        }
+      ],
+      "usps": [
+        {
+          "icon": "breakfast",
+          "text": {
+            "en": "Made-to-order\nbreakfast",
+            "ar": "إفطار يُحضّر\nحسب الطلب"
+          }
+        },
+        {
+          "icon": "cocktail",
+          "text": {
+            "en": "Complimentary\nevening reception",
+            "ar": "استقبال مسائي\nمجاني"
+          }
+        },
+        {
+          "icon": "size",
+          "text": {
+            "en": "49 sq. m.\n527 sq. ft",
+            "ar": "49 مترًا مربعًا\n527 قدمًا مربعًا"
+          }
+        }
+      ]
+    },
+    "king-corner-room-burj-khalifa-view": {
+      "template": "room",
+      "gallery": [
+        "assets/images/rooms/king-corner-room-burj-khalifa-view-01.jpg",
+        "assets/images/rooms/king-corner-room-burj-khalifa-view-02.jpg",
+        "assets/images/rooms/king-corner-room-burj-khalifa-view-03.jpg",
+        "assets/images/rooms/king-corner-room-burj-khalifa-view-04.jpg"
+      ],
+      "title": {
+        "en": "King Corner Room\nwith Burj Khalifa View",
+        "ar": "غرفة كينغ زاوية بإطلالة\nعلى برج خليفة"
+      },
+      "bookContact": "rooms",
+      "text": {
+        "en": "Wake up to expansive views of Dubai from the comfort of your stylish corner room. Featuring a plush king bed and generous space, this room combines contemporary design with a prime vantage point. Enjoy a memorable stay with views toward the iconic Burj Khalifa and the Dubai skyline.",
+        "ar": "استيقظ على إطلالات واسعة على دبي من راحة غرفتك الزاوية الأنيقة. تتميز الغرفة بسرير كينغ مريح ومساحة رحبة تجمع بين التصميم العصري والإطلالات المميزة. استمتع بإقامة لا تُنسى مع إطلالات على برج خليفة الشهير وأفق دبي."
+      },
+      "highlights": [
+        {
+          "icon": "guests",
+          "title": {
+            "en": "Guests",
+            "ar": "الضيوف"
+          },
+          "items": [
+            {
+              "en": "Sleeps Two",
+              "ar": "يتسع لشخصين"
+            }
+          ]
+        },
+        {
+          "icon": "view",
+          "title": {
+            "en": "Views",
+            "ar": "الإطلالات"
+          },
+          "items": [
+            {
+              "en": "Burj Khalifa View",
+              "ar": "إطلالة على برج خليفة"
+            }
+          ]
+        },
+        {
+          "icon": "kitchen",
+          "title": {
+            "en": "Kitchen & Dining",
+            "ar": "المطبخ وتناول الطعام"
+          },
+          "items": [
+            {
+              "en": "Minibar",
+              "ar": "ميني بار"
+            }
+          ]
+        },
+        {
+          "icon": "layout",
+          "title": {
+            "en": "Room Layout",
+            "ar": "تصميم الغرفة"
+          },
+          "items": [
+            {
+              "en": "Living Area",
+              "ar": "منطقة معيشة"
+            }
+          ]
+        },
+        {
+          "icon": "bath",
+          "title": {
+            "en": "Bathroom",
+            "ar": "الحمّام"
+          },
+          "items": [
+            {
+              "en": "Rain Shower",
+              "ar": "دش مطري"
+            },
+            {
+              "en": "Separate Bathtub",
+              "ar": "حوض استحمام منفصل"
+            },
+            {
+              "en": "Separate Shower",
+              "ar": "دش منفصل"
+            }
+          ]
+        },
+        {
+          "icon": "sofa",
+          "title": {
+            "en": "Room Feature",
+            "ar": "مزايا الغرفة"
+          },
+          "items": [
+            {
+              "en": "Corner Room",
+              "ar": "غرفة زاوية"
+            }
+          ]
+        }
+      ],
+      "usps": [
+        {
+          "icon": "breakfast",
+          "text": {
+            "en": "Made-to-order\nbreakfast",
+            "ar": "إفطار يُحضّر\nحسب الطلب"
+          }
+        },
+        {
+          "icon": "cocktail",
+          "text": {
+            "en": "Complimentary\nevening reception",
+            "ar": "استقبال مسائي\nمجاني"
+          }
+        },
+        {
+          "icon": "size",
+          "text": {
+            "en": "37 sq. m.\n398 sq. ft",
+            "ar": "37 مترًا مربعًا\n398 قدمًا مربعًا"
+          }
+        }
+      ]
+    },
+    "two-bedroom-suite-burj-khalifa-view": {
+      "template": "room",
+      "gallery": [
+        "assets/images/rooms/two-bedroom-suite-burj-khalifa-view-01.jpg",
+        "assets/images/rooms/two-bedroom-suite-burj-khalifa-view-02.jpg",
+        "assets/images/rooms/two-bedroom-suite-burj-khalifa-view-03.jpg",
+        "assets/images/rooms/two-bedroom-suite-burj-khalifa-view-04.jpg"
+      ],
+      "title": {
+        "en": "Two Bedroom Suite\nwith Burj Khalifa View",
+        "ar": "جناح كينغ بغرفتي نوم مع\nإطلالة على برج خليفة"
+      },
+      "bookContact": "rooms",
+      "text": {
+        "en": "Make yourself at home in our expansive two-bedroom suite, created for families and larger groups. Featuring a king bedroom, twin beds, separate living space, and impressive Burj Khalifa views. Enjoy the perfect blend of privacy, shared space, and elevated comfort for a memorable Dubai stay.",
+        "ar": "اشعر وكأنك في منزلك في جناحنا الفسيح المكوّن من غرفتي نوم، والمصمم للعائلات والمجموعات الكبيرة. يضم الجناح غرفة نوم بسرير كينغ، وأسرة توأم، ومساحة معيشة منفصلة، إلى جانب إطلالات مميزة على برج خليفة. استمتع بمزيج مثالي من الخصوصية والمساحات المشتركة والراحة الراقية لإقامة لا تُنسى في دبي."
+      },
+      "highlights": [
+        {
+          "icon": "guests",
+          "title": {
+            "en": "Guests",
+            "ar": "الضيوف"
+          },
+          "items": [
+            {
+              "en": "Sleeps Five",
+              "ar": "يتسع لخمسة أشخاص"
+            }
+          ]
+        },
+        {
+          "icon": "view",
+          "title": {
+            "en": "Views",
+            "ar": "الإطلالات"
+          },
+          "items": [
+            {
+              "en": "Burj Khalifa View",
+              "ar": "إطلالة على برج خليفة"
+            }
+          ]
+        },
+        {
+          "icon": "kitchen",
+          "title": {
+            "en": "Kitchen & Dining",
+            "ar": "المطبخ وتناول الطعام"
+          },
+          "items": [
+            {
+              "en": "Minibar",
+              "ar": "ميني بار"
+            }
+          ]
+        },
+        {
+          "icon": "layout",
+          "title": {
+            "en": "Room Layout",
+            "ar": "تصميم الغرفة"
+          },
+          "items": [
+            {
+              "en": "Balcony",
+              "ar": "شرفة"
+            },
+            {
+              "en": "Living Area",
+              "ar": "منطقة معيشة"
+            },
+            {
+              "en": "Multi Bathroom",
+              "ar": "حمّامات متعددة"
+            },
+            {
+              "en": "Multi Bedroom",
+              "ar": "غرف نوم متعددة"
+            },
+            {
+              "en": "Separated Bedroom And Living Spaces",
+              "ar": "غرفة نوم ومساحات معيشة منفصلة"
+            },
+            {
+              "en": "Workspace",
+              "ar": "مساحة للعمل"
+            }
+          ]
+        },
+        {
+          "icon": "bath",
+          "title": {
+            "en": "Bathroom",
+            "ar": "الحمّام"
+          },
+          "items": [
+            {
+              "en": "Rain Shower",
+              "ar": "دش مطري"
+            },
+            {
+              "en": "Separate Bathtub",
+              "ar": "حوض استحمام منفصل"
+            },
+            {
+              "en": "Separate Shower",
+              "ar": "دش منفصل"
+            }
+          ]
+        },
+        {
+          "icon": "sofa",
+          "title": {
+            "en": "Room Feature",
+            "ar": "مزايا الغرفة"
+          },
+          "items": [
+            {
+              "en": "Sofa",
+              "ar": "أريكة"
+            },
+            {
+              "en": "Sofa Bed",
+              "ar": "أريكة سرير"
+            }
+          ]
+        }
+      ],
+      "usps": [
+        {
+          "icon": "breakfast",
+          "text": {
+            "en": "Made-to-order\nbreakfast",
+            "ar": "إفطار يُحضّر\nحسب الطلب"
+          }
+        },
+        {
+          "icon": "cocktail",
+          "text": {
+            "en": "Complimentary\nevening reception",
+            "ar": "استقبال مسائي\nمجاني"
+          }
+        },
+        {
+          "icon": "size",
+          "text": {
+            "en": "37 sq. m.\n398 sq. ft",
+            "ar": "37 مترًا مربعًا\n398 قدمًا مربعًا"
+          }
+        }
+      ]
+    },
+    "king-one-bedroom-suite-kitchenette": {
+      "template": "room",
+      "gallery": [
+        "assets/images/rooms/king-one-bedroom-suite-kitchenette-01.jpg",
+        "assets/images/rooms/king-one-bedroom-suite-kitchenette-02.jpg",
+        "assets/images/rooms/king-one-bedroom-suite-kitchenette-03.jpg",
+        "assets/images/rooms/king-one-bedroom-suite-kitchenette-04.jpg"
+      ],
+      "title": {
+        "en": "King One Bedroom\nSuite with Kitchenette",
+        "ar": "جناح كينغ بغرفة نوم واحدة\nمع مطبخ صغير"
+      },
+      "bookContact": "rooms",
+      "text": {
+        "en": "Enjoy the comfort and flexibility of a spacious one-bedroom suite designed to feel like your home in Dubai. Relax in a separate living area and unwind in a comfortable king bedroom, with a convenient kitchenette for added flexibility during your stay.",
+        "ar": "استمتع براحة ومرونة جناح واسع بغرفة نوم واحدة، مصمم ليمنحك إحساس المنزل أثناء إقامتك في دبي. استرخِ في منطقة المعيشة المنفصلة واستمتع بغرفة نوم مريحة بسرير كينغ، مع مطبخ صغير يوفر لك المزيد من المرونة والراحة. خيار مثالي للعائلات والأزواج والإقامات الطويلة الباحثة عن مساحة إضافية وراحة الإقامة في جناح متكامل."
+      },
+      "highlights": [
+        {
+          "icon": "guests",
+          "title": {
+            "en": "Guests",
+            "ar": "الضيوف"
+          },
+          "items": [
+            {
+              "en": "Sleeps Five",
+              "ar": "يتسع لخمسة أشخاص"
+            }
+          ]
+        },
+        {
+          "icon": "view",
+          "title": {
+            "en": "Views",
+            "ar": "الإطلالات"
+          },
+          "items": [
+            {
+              "en": "Burj Khalifa View",
+              "ar": "إطلالة على برج خليفة"
+            }
+          ]
+        },
+        {
+          "icon": "kitchen",
+          "title": {
+            "en": "Kitchen & Dining",
+            "ar": "المطبخ وتناول الطعام"
+          },
+          "items": [
+            {
+              "en": "Minibar",
+              "ar": "ميني بار"
+            },
+            {
+              "en": "Full-Size Refrigerator",
+              "ar": "ثلاجة كاملة الحجم"
+            }
+          ]
+        },
+        {
+          "icon": "layout",
+          "title": {
+            "en": "Room Layout",
+            "ar": "تصميم الغرفة"
+          },
+          "items": [
+            {
+              "en": "Balcony",
+              "ar": "شرفة"
+            },
+            {
+              "en": "Living Area",
+              "ar": "منطقة معيشة"
+            },
+            {
+              "en": "Multi Bathroom",
+              "ar": "حمّامات متعددة"
+            },
+            {
+              "en": "Multi Bedroom",
+              "ar": "غرف نوم متعددة"
+            },
+            {
+              "en": "Separated Bedroom And Living Spaces",
+              "ar": "غرفة نوم ومساحات معيشة منفصلة"
+            },
+            {
+              "en": "Workspace",
+              "ar": "مساحة للعمل"
+            }
+          ]
+        },
+        {
+          "icon": "bath",
+          "title": {
+            "en": "Bathroom",
+            "ar": "الحمّام"
+          },
+          "items": [
+            {
+              "en": "Rain Shower",
+              "ar": "دش مطري"
+            },
+            {
+              "en": "Separate Bathtub",
+              "ar": "حوض استحمام منفصل"
+            },
+            {
+              "en": "Separate Shower",
+              "ar": "دش منفصل"
+            },
+            {
+              "en": "Dual Vanity",
+              "ar": "مغسلتان منفصلتان"
+            }
+          ]
+        },
+        {
+          "icon": "sofa",
+          "title": {
+            "en": "Room Feature",
+            "ar": "مزايا الغرفة"
+          },
+          "items": [
+            {
+              "en": "Sofa",
+              "ar": "أريكة"
+            },
+            {
+              "en": "Sofa Bed",
+              "ar": "أريكة سرير"
+            }
+          ]
+        }
+      ],
+      "usps": [
+        {
+          "icon": "breakfast",
+          "text": {
+            "en": "Made-to-order\nbreakfast",
+            "ar": "إفطار يُحضّر\nحسب الطلب"
+          }
+        },
+        {
+          "icon": "cocktail",
+          "text": {
+            "en": "Complimentary\nevening reception",
+            "ar": "استقبال مسائي\nمجاني"
+          }
+        },
+        {
+          "icon": "size",
+          "text": {
+            "en": "60 sq. m.\n645 sq. ft",
+            "ar": "60 مترًا مربعًا\n645 قدمًا مربعًا"
+          }
+        }
+      ]
+    },
+    "queen-accessible-guest-room": {
+      "template": "room",
+      "gallery": [
+        "assets/images/rooms/queen-accessible-guest-room-01.jpg",
+        "assets/images/rooms/queen-accessible-guest-room-02.jpg",
+        "assets/images/rooms/queen-accessible-guest-room-03.jpg",
+        "assets/images/rooms/queen-accessible-guest-room-04.jpg"
+      ],
+      "title": {
+        "en": "Queen Accessible\nGuest Room",
+        "ar": ""
+      },
+      "bookContact": "rooms",
+      "text": {
+        "en": "Enjoy a comfortable and thoughtfully designed stay in a spacious mobility-accessible guest room. Featuring a queen bed, contemporary furnishings, and accessible features designed for ease and convenience. A welcoming choice for travelers seeking comfort, accessibility, and a seamless Dubai stay.",
+        "ar": "استمتع بإقامة مريحة في غرفة ضيوف واسعة ومصممة بعناية لتوفير سهولة الحركة والوصول. تضم الغرفة سرير كوين، ومفروشات عصرية، وتجهيزات ملائمة لتوفير المزيد من الراحة والسهولة. خيار مثالي للمسافرين الباحثين عن الراحة وسهولة الوصول وإقامة سلسة في دبي."
+      },
+      "highlights": [
+        {
+          "icon": "guests",
+          "title": {
+            "en": "Guests",
+            "ar": "الضيوف"
+          },
+          "items": [
+            {
+              "en": "Sleeps Two",
+              "ar": ""
+            }
+          ]
+        },
+        {
+          "icon": "view",
+          "title": {
+            "en": "Views",
+            "ar": "الإطلالات"
+          },
+          "items": [
+            {
+              "en": "Burj Khalifa View",
+              "ar": "إطلالة على برج خليفة"
+            }
+          ]
+        },
+        {
+          "icon": "kitchen",
+          "title": {
+            "en": "Kitchen & Dining",
+            "ar": "المطبخ وتناول الطعام"
+          },
+          "items": [
+            {
+              "en": "Minibar",
+              "ar": "ميني بار"
+            }
+          ]
+        },
+        {
+          "icon": "layout",
+          "title": {
+            "en": "Room Layout",
+            "ar": "تصميم الغرفة"
+          },
+          "items": [
+            {
+              "en": "Workspace",
+              "ar": "مساحة للعمل"
+            }
+          ]
+        },
+        {
+          "icon": "accessible",
+          "title": {
+            "en": "Accessibility",
+            "ar": "سهولة الوصول"
+          },
+          "items": [
+            {
+              "en": "Hearing Accessible",
+              "ar": "ملائم لذوي الإعاقة السمعية"
+            },
+            {
+              "en": "Mobility Accessible",
+              "ar": "ملائم لذوي الحركة المحدودة"
+            },
+            {
+              "en": "Roll-In Shower",
+              "ar": "دش مهيأ لسهولة الدخول بالكراسي المتحركة"
+            }
+          ]
+        }
+      ],
+      "usps": [
+        {
+          "icon": "breakfast",
+          "text": {
+            "en": "Made-to-order\nbreakfast",
+            "ar": "إفطار يُحضّر\nحسب الطلب"
+          }
+        },
+        {
+          "icon": "cocktail",
+          "text": {
+            "en": "Complimentary\nevening reception",
+            "ar": "استقبال مسائي\nمجاني"
+          }
+        },
+        {
+          "icon": "size",
+          "text": {
+            "en": "60 sq. m.\n645 sq. ft",
+            "ar": "60 مترًا مربعًا\n645 قدمًا مربعًا"
+          }
+        }
+      ]
+    },
+    "meetings": {
+      "template": "list",
+      "cardStyle": "feature",
+      "background": "assets/images/meetings/background.jpg",
+      "title": {
+        "en": "Meetings & Events",
+        "ar": "الاجتماعات والفعاليات"
+      },
+      "headline": {
+        "en": "Relax • Refresh • Recharge",
+        "ar": "استرخِ • انتعش • استعد نشاطك"
+      },
+      "text": {
+        "en": "Take time for what makes you feel good. Explore our recreational facilities designed for relaxation, wellness and family fun.",
+        "ar": "خذوا وقتاً للاسترخاء والاستمتاع. اكتشفوا مرافقنا الترفيهية المصممة للراحة والعافية والمرح لجميع أفراد العائلة."
+      },
+      "items": [
+        {
+          "target": "fursa-ballroom",
+          "image": "assets/images/meetings/fursa-ballroom-card.jpg",
+          "logo": "",
+          "title": {
+            "en": "Fursa\nBallroom",
+            "ar": ""
+          },
+          "tagline": {
+            "en": "",
+            "ar": ""
+          },
+          "text": {
+            "en": "An elegant and versatile ballroom designed for weddings, conferences, corporate events and grand celebrations.",
+            "ar": ""
+          },
+          "meta": [
+            {
+              "icon": "guests",
+              "text": {
+                "en": "Up to 450 guests",
+                "ar": ""
+              }
+            },
+            {
+              "icon": "size",
+              "text": {
+                "en": "645 sq. m.",
+                "ar": ""
+              }
+            }
+          ]
+        },
+        {
+          "target": "infinity-1",
+          "image": "assets/images/meetings/infinity-1-card.jpg",
+          "logo": "",
+          "title": {
+            "en": "Infinity 1\nMeeting Room",
+            "ar": ""
+          },
+          "tagline": {
+            "en": "",
+            "ar": ""
+          },
+          "text": {
+            "en": "A contemporary meeting space ideal for presentations, workshops and productive business gatherings.",
+            "ar": ""
+          },
+          "meta": [
+            {
+              "icon": "guests",
+              "text": {
+                "en": "Up to 40 guests",
+                "ar": ""
+              }
+            },
+            {
+              "icon": "size",
+              "text": {
+                "en": "34 sq. m.",
+                "ar": ""
+              }
+            }
+          ]
+        },
+        {
+          "target": "infinity-2",
+          "image": "assets/images/meetings/infinity-2-card.jpg",
+          "logo": "",
+          "title": {
+            "en": "Infinity 2\nMeeting Room",
+            "ar": ""
+          },
+          "tagline": {
+            "en": "",
+            "ar": ""
+          },
+          "text": {
+            "en": "A flexible meeting space designed for training sessions, presentations and collaborative discussions.",
+            "ar": ""
+          },
+          "meta": [
+            {
+              "icon": "guests",
+              "text": {
+                "en": "Up to 40 guests",
+                "ar": ""
+              }
+            },
+            {
+              "icon": "size",
+              "text": {
+                "en": "43 sq. m.",
+                "ar": ""
+              }
+            }
+          ]
+        },
+        {
+          "target": "infinity-3",
+          "image": "assets/images/meetings/infinity-3-card.jpg",
+          "logo": "",
+          "title": {
+            "en": "Infinity 3\nMeeting Room",
+            "ar": "غرفة اجتماعات\nإنفينيتي 3"
+          },
+          "tagline": {
+            "en": "",
+            "ar": ""
+          },
+          "text": {
+            "en": "A modern and adaptable venue for meetings, seminars and small corporate events.",
+            "ar": "مساحة عصرية ومرنة مثالية للاجتماعات والندوات وفعاليات الشركات الصغيرة."
+          },
+          "meta": [
+            {
+              "icon": "guests",
+              "text": {
+                "en": "Up to 40 guests",
+                "ar": "تتسع لما يصل إلى 40 ضيفاً"
+              }
+            },
+            {
+              "icon": "size",
+              "text": {
+                "en": "34 sq. m.",
+                "ar": "34 مترًا مربعًا"
+              }
+            }
+          ]
+        },
+        {
+          "target": "infinity-4",
+          "image": "assets/images/meetings/infinity-4-card.jpg",
+          "logo": "",
+          "title": {
+            "en": "Infinity 4\nMeeting Room",
+            "ar": "غرفة اجتماعات\nإنفينيتي 4"
+          },
+          "tagline": {
+            "en": "",
+            "ar": ""
+          },
+          "text": {
+            "en": "A comfortable professional setting for team meetings, workshops and focused business sessions.",
+            "ar": "مساحة مهنية مريحة مثالية لاجتماعات فرق العمل وورش العمل وجلسات الأعمال المركزة."
+          },
+          "meta": [
+            {
+              "icon": "guests",
+              "text": {
+                "en": "Up to 24 guests",
+                "ar": "تتسع لما يصل إلى 24 ضيفاً"
+              }
+            },
+            {
+              "icon": "size",
+              "text": {
+                "en": "30 sq. m.",
+                "ar": "30 مترًا مربعًا"
+              }
+            }
+          ]
+        },
+        {
+          "target": "mobius",
+          "image": "assets/images/meetings/mobius-card.jpg",
+          "logo": "",
+          "title": {
+            "en": "Mobius\nBoard Room",
+            "ar": "غرفة اجتماعات\nموبيوس"
+          },
+          "tagline": {
+            "en": "",
+            "ar": ""
+          },
+          "text": {
+            "en": "A refined boardroom designed for executive meetings, private discussions and focused decision-making.",
+            "ar": "غرفة اجتماعات راقية مصممة للاجتماعات التنفيذية والنقاشات الخاصة واتخاذ القرارات بتركيز."
+          },
+          "meta": [
+            {
+              "icon": "guests",
+              "text": {
+                "en": "Up to 14 guests",
+                "ar": "تتسع لما يصل إلى 14 ضيفاً"
+              }
+            },
+            {
+              "icon": "size",
+              "text": {
+                "en": "41 sq. m.",
+                "ar": "41 مترًا مربعًا"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "nearby": {
+      "template": "list",
+      "cardStyle": "attraction",
+      "background": "assets/images/nearby/background.jpg",
+      "title": {
+        "en": "NEARBY ATTRACTIONS",
+        "ar": "المعالم السياحية القريبة"
+      },
+      "headline": {
+        "en": "Explore • Discover • Experience",
+        "ar": "استكشف • اكتشف • استمتع"
+      },
+      "text": {
+        "en": "Discover the best of Dubai just moments from the hotel. From iconic landmarks and world-class shopping to cultural experiences and family attractions, there's always more to explore.",
+        "ar": "اكتشفوا أفضل ما تقدمه دبي على مقربة من الفندق. من المعالم الشهيرة والتسوق العالمي إلى التجارب الثقافية والوجهات العائلية، هناك دائماً المزيد لاستكشافه."
+      },
+      "items": [
+        {
+          "target": "",
+          "image": "assets/images/nearby/museum-of-the-future.jpg",
+          "logo": "",
+          "title": {
+            "en": "Museum of the Future",
+            "ar": ""
+          },
+          "tagline": {
+            "en": "",
+            "ar": ""
+          },
+          "text": {
+            "en": "Step into an immersive journey through tomorrow's possibilities. Explore experiences inspired by technology, science and innovation. A fascinating destination for curious minds of all ages.",
+            "ar": ""
+          },
+          "meta": [
+            {
+              "icon": "pin",
+              "text": {
+                "en": "Approx. 11–12 km",
+                "ar": "حوالي 11–12 كم"
+              }
+            },
+            {
+              "icon": "clock",
+              "text": {
+                "en": "Check current admission times",
+                "ar": "يرجى التحقق من المواعيد الحالية"
+              }
+            },
+            {
+              "icon": "people",
+              "text": {
+                "en": "Families, Beach",
+                "ar": ""
+              }
+            }
+          ]
+        },
+        {
+          "target": "",
+          "image": "assets/images/nearby/al-fahidi.jpg",
+          "logo": "",
+          "title": {
+            "en": "Al Fahidi Historical Neighbourhood",
+            "ar": "حي الفهيدي التاريخي"
+          },
+          "tagline": {
+            "en": "4.6 · Heritage & Culture",
+            "ar": "4.6 · التراث والثقافة"
+          },
+          "text": {
+            "en": "See old and new Dubai from one spectacular landmark. Enjoy panoramic city views from 150 meters above the ground. Discover Dubai's remarkable journey from past to future.",
+            "ar": "تجولوا بين أزقة أحد أعرق أحياء دبي، واكتشفوا العمارة التقليدية والمتاحف والتجارب الثقافية الإماراتية. وجهة مثالية لاكتشاف الجانب التاريخي من المدينة."
+          },
+          "meta": [
+            {
+              "icon": "pin",
+              "text": {
+                "en": "Approx. 13–14 km",
+                "ar": "حوالي 13–14 كم"
+              }
+            },
+            {
+              "icon": "clock",
+              "text": {
+                "en": "7:00 AM – 8:00 PM",
+                "ar": "07:00 صباحاً – 08:00 مساءً"
+              }
+            },
+            {
+              "icon": "people",
+              "text": {
+                "en": "Culture, History, Families",
+                "ar": "الثقافة، التاريخ، التصوير، العائلات"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "family": {
+      "template": "guide",
+      "hero": "assets/images/family/hero.jpg",
+      "logo": "assets/brand/hilton-for-the-stay.png",
+      "welcome": {
+        "en": "Welcome",
+        "ar": "مرحباً بكم"
+      },
+      "title": {
+        "en": "Your dream family getaway begins here",
+        "ar": "تبدأ عطلتكم العائلية التي تحلمون بها من هنا"
+      },
+      "intro": {
+        "en": "We are delighted to have you and your family with us and committed to making your stay as enjoyable and memorable as possible. Please find an overview of amenities you can expect at our hotel below. If you have any questions or require assistance, please reach out to us.",
+        "ar": "يسعدنا أن نرحب بكم وبعائلتكم، ونسعى جاهدين لجعل إقامتكم ممتعة ولا تُنسى قدر الإمكان. تجدون أدناه نبذة عن المرافق والخدمات التي يمكنكم الاستمتاع بها في فندقنا. إذا كانت لديكم أي استفسارات أو احتجتم إلى أي مساعدة، فلا تترددوا في التواصل معنا."
+      },
+      "sections": [
+        {
+          "icon": "bed",
+          "image": "",
+          "title": {
+            "en": "Your Room",
+            "ar": "غرفتكم"
+          },
+          "text": {
+            "en": "Your room is ready for you at 15:00hrs. If you arrive early and we cannot already accommodate you, we are happy to store your luggage. You can request bespoke amenities for your stay by completing the travel checklist supplied.",
+            "ar": "ستكون غرفتكم جاهزة لاستقبالكم ابتداءً من الساعة 15:00. وفي حال وصولكم مبكراً ولم تكن الغرفة متاحة بعد، يسعدنا الاحتفاظ بأمتعتكم. كما يمكنكم طلب وسائل راحة مخصصة لإقامتكم من خلال استكمال قائمة التحقق الخاصة بالسفر المتوفرة لكم."
+          }
+        },
+        {
+          "icon": "family",
+          "image": "",
+          "title": {
+            "en": "Facilities",
+            "ar": "المرافق"
+          },
+          "text": {
+            "en": "Baby changing facilities are available throughout the hotel at the lobby and at the leisure facilities on the 3rd floor.",
+            "ar": "تتوفر مرافق لتغيير حفاضات الأطفال في أنحاء الفندق، بما في ذلك منطقة اللوبي ومرافق الترفيه في الطابق الثالث."
+          }
+        },
+        {
+          "icon": "cutlery",
+          "image": "",
+          "title": {
+            "en": "Dining",
+            "ar": "تناول الطعام"
+          },
+          "text": {
+            "en": "The hotel offers a delightful variety of kid-friendly meals, ranging from fun finger foods to wholesome full-course options. For reservations or inquiries, please reach out to our team at: DXBAI_Info@hilton.com.\n\nThe Gourmet Yard is a vibrant casual dining destination that celebrates global flavors through its signature Tandoor, Wok, Grill, and Oven specialties, offering a dynamic menu.\nBreakfast: 06:30-10:30 (weekdays); 06:30-11:00 (weekends)\nDinner: 06:30-22:30\n\nRio Restaurant & Lounge is a poolside escape that blends Mediterranean elegance with cosmopolitan flair.\n\nRequire snacks? The Drip lobby café offers healthy quick bites and refreshers 24-Hours.\n\nIs milk still on the menu? Refill baby milk bottles at any of our outlets free of charge.",
+            "ar": "يقدم الفندق تشكيلة متنوعة وشهية من الوجبات المناسبة للأطفال، بدءاً من الوجبات الخفيفة الممتعة وصولاً إلى الوجبات المتكاملة والمغذية. للحجوزات أو الاستفسارات، يرجى التواصل مع فريقنا عبر البريد الإلكتروني: DXBAI_Info@hilton.com\n\nThe Gourmet Yard وجهة نابضة بالحياة لتناول الطعام بأسلوب غير رسمي، تحتفي بنكهات عالمية من خلال أطباقها المميزة المحضّرة في التنور والووك والشواية والفرن، مع قائمة متنوعة ومتجددة.\nالإفطار: 06:30 – 10:30 خلال أيام الأسبوع، 06:30 – 11:00 خلال عطلة نهاية الأسبوع\nالعشاء: 06:30 – 22:30\n\nRio Restaurant & Lounge وجهة مميزة بجانب المسبح تجمع بين الأناقة المتوسطية والطابع العصري العالمي.\n\nهل ترغبون في وجبة خفيفة؟ يقدم The Drip في اللوبي مجموعة من الوجبات الخفيفة الصحية والمشروبات المنعشة على مدار 24 ساعة.\n\nهل لا يزال الحليب ضمن القائمة؟ يمكنكم إعادة تعبئة زجاجات حليب الأطفال مجاناً في أي من منافذ الطعام والشراب لدينا."
+          }
+        },
+        {
+          "icon": "swim",
+          "image": "",
+          "title": {
+            "en": "Activities",
+            "ar": "الأنشطة"
+          },
+          "text": {
+            "en": "We have a range of activities planned for families, including:\n\nPool: A serene and temperature-controlled pool ideal for relaxation or a refreshing swim. Children under 16 must be supervised by an adult at all times. Hours: 07:00-19:00\n\nKids Pool: A shallow and safe water area designed for children aged 3 to 12, ensuring splashing fun.\n\nKids Play Area (Indoor): A vibrant, air-conditioned space equipped with toys, games, and soft play features, suitable for children aged 3 to 6. Parental supervision is required. Hours: 10:00-19:00\n\nKids Play Area (Outdoor): An open-air playground with age-appropriate equipment, perfect for children to enjoy active play in a secure environment. Hours: 07:00-19:00",
+            "ar": "نقدم مجموعة من الأنشطة المصممة للعائلات، بما في ذلك:\n\nالمسبح: مسبح هادئ ومُتحكم بدرجة حرارته، مثالي للاسترخاء أو الاستمتاع بسباحة منعشة. يجب أن يكون الأطفال دون سن 16 عاماً تحت إشراف شخص بالغ في جميع الأوقات. ساعات العمل: 07:00 – 19:00\n\nمسبح الأطفال: منطقة مائية ضحلة وآمنة مصممة للأطفال من عمر 3 إلى 12 عاماً، لتوفير تجربة ممتعة وآمنة لهم.\n\nمنطقة ألعاب الأطفال الداخلية: مساحة مفعمة بالحيوية ومكيّفة، مجهزة بالألعاب والأنشطة ومرافق اللعب الآمنة، ومناسبة للأطفال من عمر 3 إلى 6 أعوام. يشترط إشراف الوالدين. ساعات العمل: 10:00 – 19:00\n\nمنطقة ألعاب الأطفال الخارجية: ملعب خارجي مجهز بألعاب مناسبة لمختلف الأعمار، يتيح للأطفال الاستمتاع باللعب والحركة في بيئة آمنة. ساعات العمل: 07:00 – 19:00"
+          }
+        },
+        {
+          "icon": "landmark",
+          "image": "assets/images/family/nearby.jpg",
+          "title": {
+            "en": "Child friendly activities in your area",
+            "ar": "أنشطة مناسبة للأطفال في المنطقة"
+          },
+          "text": {
+            "en": "Dubai offers a variety of child-friendly activities that are perfect for a fun day out with the family. Here are some great options:\n\nThe BEEhive: An edutainment play area in Business Bay offering arts, crafts, scientific experiments, music, and soft play for children aged 1–12.\n\nBay Avenue Park: A community park featuring a children's playground, skate park, grassy areas, and shaded seating, providing a relaxing environment for families.\n\nDubai Aquarium & Underwater Zoo: Located in The Dubai Mall, this attraction offers a 48-meter walk-through tunnel and houses around 33,000 aquatic animals, including the largest collection of sand tiger sharks in the world.\n\nPlay DXB: An indoor virtual reality park in The Dubai Mall, offering immersive experiences and games suitable for older children and teenagers.\n\nKidZania: is an award-winning, interactive edutainment destination located on the second floor of The Dubai Mall. Spanning over 7,000 square meters, it is a scaled-down replica of a real city, designed for children aged 4 to 16 to explore various professions through immersive role-play experiences.\n\nThese are just a few of the many child-friendly activities available in our area. Whether you’re looking for outdoor adventures or indoor fun, there’s something for every family to enjoy. Have a great time exploring!",
+            "ar": "تقدم دبي مجموعة متنوعة من الأنشطة المناسبة للأطفال، والمثالية لقضاء يوم ممتع مع العائلة. إليكم بعض الخيارات الرائعة:\n\nThe BEEhive: مساحة تعليمية وترفيهية في الخليج التجاري، تقدم أنشطة الفنون والحرف اليدوية والتجارب العلمية والموسيقى وألعاب الحركة للأطفال من عمر سنة إلى 12 عاماً.\n\nBay Avenue Park: حديقة مجتمعية تضم ملعباً للأطفال، ومنطقة للتزلج، ومساحات خضراء، وأماكن جلوس مظللة، مما يوفر أجواء مريحة وممتعة للعائلات.\n\nDubai Aquarium & Underwater Zoo: يقع في دبي مول، ويضم ممراً زجاجياً بطول 48 متراً، بالإضافة إلى نحو 33,000 كائن بحري، بما في ذلك واحدة من أكبر مجموعات أسماك قرش النمر الرملي في العالم.\n\nPlay DXB: وجهة داخلية للواقع الافتراضي في دبي مول، تقدم تجارب وألعاباً تفاعلية غامرة تناسب الأطفال الأكبر سناً والمراهقين.\n\nKidZania: وجهة تعليمية وترفيهية تفاعلية حائزة على جوائز، وتقع في الطابق الثاني من دبي مول. تمتد على مساحة تزيد عن 7,000 متر مربع، وتحاكي مدينة حقيقية مصغرة، حيث يمكن للأطفال من عمر 4 إلى 16 عاماً استكشاف مجموعة متنوعة من المهن من خلال تجارب لعب أدوار تفاعلية وغامرة.\n\nهذه ليست سوى بعض الأنشطة العائلية المتوفرة في المنطقة. سواء كنتم تبحثون عن مغامرات في الهواء الطلق أو تجارب ممتعة داخلية، ستجدون خيارات تناسب جميع أفراد العائلة. نتمنى لكم وقتاً رائعاً في الاستكشاف والاستمتاع!"
+          }
+        },
+        {
+          "icon": "help",
+          "image": "",
+          "title": {
+            "en": "Contact us",
+            "ar": "تواصلوا معنا"
+          },
+          "text": {
+            "en": "Our team is here to ensure you have everything you need. If you have any questions or require assistance, please dial ‘0’ from your room phone or visit the front desk. You can also message us directly prior to your arrival or during your stay via the Hilton Honors app. We hope you have a fantastic stay with us and create wonderful memories with your loved ones.",
+            "ar": "فريقنا هنا لضمان حصولكم على كل ما تحتاجونه خلال إقامتكم. إذا كانت لديكم أي استفسارات أو احتجتم إلى المساعدة، يرجى الاتصال بالرقم «0» من هاتف الغرفة أو زيارة مكتب الاستقبال. كما يمكنكم مراسلتنا مباشرة قبل الوصول أو أثناء إقامتكم عبر تطبيق Hilton Honors. نتمنى لكم إقامة رائعة معنا، وأن تصنعوا أجمل الذكريات برفقة أحبائكم."
+          }
+        }
+      ]
+    },
+    "fursa-ballroom": {
+      "template": "meeting",
+      "hero": "assets/images/meetings/fursa-ballroom-hero.jpg",
+      "title": {
+        "en": "Fursa\nBallroom",
+        "ar": "قاعة\nفرصة"
+      },
+      "headline": {
+        "en": "Grand Occasions, Extraordinary Moments",
+        "ar": "مناسبات استثنائية، ولحظات لا تُنسى"
+      },
+      "text": {
+        "en": "An elegant and versatile ballroom designed for weddings, corporate events and social celebrations.",
+        "ar": "قاعة أنيقة ومتعددة الاستخدامات، مصممة لحفلات الزفاف وفعاليات الشركات والاحتفالات الاجتماعية."
+      },
+      "info": [
+        {
+          "icon": "guests",
+          "value": {
+            "en": "Up To\n450 Guests",
+            "ar": "تتسع لما يصل\nإلى 450 ضيفاً"
+          }
+        },
+        {
+          "icon": "size",
+          "value": {
+            "en": "645 Sq. M.\n6,944 Sq. Ft.",
+            "ar": "645 م²\n6,944 قدم²"
+          }
+        },
+        {
+          "icon": "entrance",
+          "value": {
+            "en": "Private\nEntrance",
+            "ar": "مدخل\nخاص"
+          }
+        },
+        {
+          "icon": "av",
+          "value": {
+            "en": "State-Of-The-Art\nAudio Visual",
+            "ar": "أحدث التقنيات\nالسمعية والبصرية"
+          }
+        }
+      ],
+      "buttons": [
+        {
+          "icon": "inquiry",
+          "label": {
+            "en": "Make an\nInquiry",
+            "ar": "أرسل\nاستفسارك"
+          },
+          "target": "contact:events"
+        },
+        {
+          "icon": "people",
+          "label": {
+            "en": "Capacities\nat a Glance",
+            "ar": "السعة في\nلمحة"
+          },
+          "target": "view:fursa-ballroom:capacityImages"
+        },
+        {
+          "icon": "floorplan",
+          "label": {
+            "en": "Explore the\nFloor Plan",
+            "ar": "استكشف\nمخطط القاعة"
+          },
+          "target": "view:fursa-ballroom:floorPlanImages"
+        }
+      ],
+      "capacityImages": [
+        "assets/images/meetings/fursa-ballroom-capacities.jpg"
+      ],
+      "floorPlanImages": [
+        "assets/images/meetings/fursa-ballroom-floor-plan.jpg"
+      ],
+      "gallery": [
+        "assets/images/meetings/fursa-ballroom-photo-01.jpg",
+        "assets/images/meetings/fursa-ballroom-photo-02.jpg",
+        "assets/images/meetings/fursa-ballroom-photo-03.jpg",
+        "assets/images/meetings/fursa-ballroom-photo-04.jpg"
+      ],
+      "banner": {
+        "image": {
+          "en": "assets/images/banners/no-minimum-spend-en.jpg",
+          "ar": "assets/images/banners/no-minimum-spend-ar.jpg"
+        },
+        "target": "contact:events"
+      }
+    },
+    "infinity-1": {
+      "template": "meeting",
+      "hero": "assets/images/meetings/infinity-1-hero.jpg",
+      "title": {
+        "en": "Infinity 1\nMeeting Room",
+        "ar": ""
+      },
+      "headline": {
+        "en": "Meet • Connect • Collaborate",
+        "ar": "اجتمع • تواصل • تعاون"
+      },
+      "text": {
+        "en": "A contemporary meeting space ideal for presentations, workshops and productive business gatherings.",
+        "ar": "مساحة اجتماعات عصرية مثالية للعروض التقديمية وورش العمل واجتماعات الأعمال المثمرة."
+      },
+      "info": [
+        {
+          "icon": "guests",
+          "value": {
+            "en": "Up To\n40 Guests",
+            "ar": "تتسع لما يصل\nإلى 40 ضيفاً"
+          }
+        },
+        {
+          "icon": "size",
+          "value": {
+            "en": "34 Sq. M.\n366 Sq. Ft.",
+            "ar": "34 م²\n366 قدم²"
+          }
+        },
+        {
+          "icon": "av",
+          "value": {
+            "en": "State-Of-The-Art\nAudio Visual",
+            "ar": "أحدث التقنيات\nالسمعية والبصرية"
+          }
+        },
+        {
+          "icon": "catering",
+          "value": {
+            "en": "Tailored\nCatering Options",
+            "ar": ""
+          }
+        }
+      ],
+      "buttons": [
+        {
+          "icon": "inquiry",
+          "label": {
+            "en": "Make an\nInquiry",
+            "ar": "أرسل\nاستفسارك"
+          },
+          "target": "contact:events"
+        },
+        {
+          "icon": "people",
+          "label": {
+            "en": "Capacities\nat a Glance",
+            "ar": "السعة في\nلمحة"
+          },
+          "target": "view:infinity-1:capacityImages"
+        },
+        {
+          "icon": "floorplan",
+          "label": {
+            "en": "Explore the\nFloor Plan",
+            "ar": "استكشف\nمخطط القاعة"
+          },
+          "target": "view:infinity-1:floorPlanImages"
+        }
+      ],
+      "capacityImages": [
+        "assets/images/meetings/infinity-1-capacities.jpg"
+      ],
+      "floorPlanImages": [
+        "assets/images/meetings/infinity-1-floor-plan.jpg"
+      ],
+      "gallery": [
+        "assets/images/meetings/infinity-1-photo-01.jpg",
+        "assets/images/meetings/infinity-1-photo-02.jpg",
+        "assets/images/meetings/infinity-1-photo-03.jpg",
+        "assets/images/meetings/infinity-1-photo-04.jpg"
+      ],
+      "banner": {
+        "image": {
+          "en": "assets/images/banners/no-minimum-spend-en.jpg",
+          "ar": "assets/images/banners/no-minimum-spend-ar.jpg"
+        },
+        "target": "contact:events"
+      }
+    },
+    "infinity-2": {
+      "template": "meeting",
+      "hero": "assets/images/meetings/infinity-2-hero.jpg",
+      "title": {
+        "en": "Infinity 2\nMeeting Room",
+        "ar": ""
+      },
+      "headline": {
+        "en": "Flexible Space, Productive Meetings",
+        "ar": "مساحة مرنة، اجتماعات مثمرة"
+      },
+      "text": {
+        "en": "A flexible meeting space designed for training sessions, presentations and collaborative discussions.",
+        "ar": "مساحة اجتماعات مرنة مصممة للدورات التدريبية والعروض التقديمية والنقاشات التعاونية."
+      },
+      "info": [
+        {
+          "icon": "guests",
+          "value": {
+            "en": "Up To\n40 Guests",
+            "ar": "تتسع لما يصل\nإلى 40 ضيفاً"
+          }
+        },
+        {
+          "icon": "size",
+          "value": {
+            "en": "43 Sq. M.\n463 Sq. Ft.",
+            "ar": "43 م²\n463 قدم²"
+          }
+        },
+        {
+          "icon": "av",
+          "value": {
+            "en": "State-Of-The-Art\nAudio Visual",
+            "ar": "أحدث التقنيات\nالسمعية والبصرية"
+          }
+        },
+        {
+          "icon": "catering",
+          "value": {
+            "en": "Tailored\nCatering Options",
+            "ar": ""
+          }
+        }
+      ],
+      "buttons": [
+        {
+          "icon": "inquiry",
+          "label": {
+            "en": "Make an\nInquiry",
+            "ar": "أرسل\nاستفسارك"
+          },
+          "target": "contact:events"
+        },
+        {
+          "icon": "people",
+          "label": {
+            "en": "Capacities\nat a Glance",
+            "ar": "السعة في\nلمحة"
+          },
+          "target": "view:infinity-2:capacityImages"
+        },
+        {
+          "icon": "floorplan",
+          "label": {
+            "en": "Explore the\nFloor Plan",
+            "ar": "استكشف\nمخطط القاعة"
+          },
+          "target": "view:infinity-2:floorPlanImages"
+        }
+      ],
+      "capacityImages": [
+        "assets/images/meetings/infinity-2-capacities.jpg"
+      ],
+      "floorPlanImages": [
+        "assets/images/meetings/infinity-2-floor-plan.jpg"
+      ],
+      "gallery": [
+        "assets/images/meetings/infinity-2-photo-01.jpg",
+        "assets/images/meetings/infinity-2-photo-02.jpg",
+        "assets/images/meetings/infinity-2-photo-03.jpg",
+        "assets/images/meetings/infinity-2-photo-04.jpg"
+      ],
+      "banner": {
+        "image": {
+          "en": "assets/images/banners/no-minimum-spend-en.jpg",
+          "ar": "assets/images/banners/no-minimum-spend-ar.jpg"
+        },
+        "target": "contact:events"
+      }
+    },
+    "infinity-3": {
+      "template": "meeting",
+      "hero": "assets/images/meetings/infinity-3-hero.jpg",
+      "title": {
+        "en": "Infinity 3\nMeeting Room",
+        "ar": "غرفة اجتماعات\nإنفينيتي 3"
+      },
+      "headline": {
+        "en": "Flexible Space, Productive Meetings",
+        "ar": "مساحة مرنة، اجتماعات مثمرة"
+      },
+      "text": {
+        "en": "A flexible meeting space designed for training sessions, presentations and collaborative discussions.",
+        "ar": "مساحة اجتماعات مرنة مصممة للدورات التدريبية والعروض التقديمية والنقاشات التعاونية."
+      },
+      "info": [
+        {
+          "icon": "guests",
+          "value": {
+            "en": "Up To\n40 Guests",
+            "ar": "تتسع لما يصل\nإلى 40 ضيفاً"
+          }
+        },
+        {
+          "icon": "size",
+          "value": {
+            "en": "34 Sq. M.\n366 Sq. Ft.",
+            "ar": "34 م²\n366 قدم²"
+          }
+        },
+        {
+          "icon": "av",
+          "value": {
+            "en": "State-Of-The-Art\nAudio Visual",
+            "ar": "أحدث التقنيات\nالسمعية والبصرية"
+          }
+        },
+        {
+          "icon": "catering",
+          "value": {
+            "en": "Tailored\nCatering Options",
+            "ar": ""
+          }
+        }
+      ],
+      "buttons": [
+        {
+          "icon": "inquiry",
+          "label": {
+            "en": "Make an\nInquiry",
+            "ar": "أرسل\nاستفسارك"
+          },
+          "target": "contact:events"
+        },
+        {
+          "icon": "people",
+          "label": {
+            "en": "Capacities\nat a Glance",
+            "ar": "السعة في\nلمحة"
+          },
+          "target": "view:infinity-3:capacityImages"
+        },
+        {
+          "icon": "floorplan",
+          "label": {
+            "en": "Explore the\nFloor Plan",
+            "ar": "استكشف\nمخطط القاعة"
+          },
+          "target": "view:infinity-3:floorPlanImages"
+        }
+      ],
+      "capacityImages": [
+        "assets/images/meetings/infinity-3-capacities.jpg"
+      ],
+      "floorPlanImages": [
+        "assets/images/meetings/infinity-3-floor-plan.jpg"
+      ],
+      "gallery": [
+        "assets/images/meetings/infinity-3-photo-01.jpg",
+        "assets/images/meetings/infinity-3-photo-02.jpg",
+        "assets/images/meetings/infinity-3-photo-03.jpg",
+        "assets/images/meetings/infinity-3-photo-04.jpg"
+      ],
+      "banner": {
+        "image": {
+          "en": "assets/images/banners/no-minimum-spend-en.jpg",
+          "ar": "assets/images/banners/no-minimum-spend-ar.jpg"
+        },
+        "target": "contact:events"
+      }
+    },
+    "infinity-4": {
+      "template": "meeting",
+      "hero": "assets/images/meetings/infinity-4-hero.jpg",
+      "title": {
+        "en": "Infinity 4\nMeeting Room",
+        "ar": "غرفة اجتماعات\nإنفينيتي 4"
+      },
+      "headline": {
+        "en": "Flexible Space, Productive Meetings",
+        "ar": "مساحة مرنة، اجتماعات مثمرة"
+      },
+      "text": {
+        "en": "A flexible meeting space designed for training sessions, presentations and collaborative discussions.",
+        "ar": "مساحة اجتماعات مرنة مصممة للدورات التدريبية والعروض التقديمية والنقاشات التعاونية."
+      },
+      "info": [
+        {
+          "icon": "guests",
+          "value": {
+            "en": "Up To\n24 Guests",
+            "ar": "تتسع لما يصل\nإلى 24 ضيفاً"
+          }
+        },
+        {
+          "icon": "size",
+          "value": {
+            "en": "34 Sq. M.\n366 Sq. Ft.",
+            "ar": "34 م²\n366 قدم²"
+          }
+        },
+        {
+          "icon": "av",
+          "value": {
+            "en": "State-Of-The-Art\nAudio Visual",
+            "ar": "أحدث التقنيات\nالسمعية والبصرية"
+          }
+        },
+        {
+          "icon": "catering",
+          "value": {
+            "en": "Tailored\nCatering Options",
+            "ar": ""
+          }
+        }
+      ],
+      "buttons": [
+        {
+          "icon": "inquiry",
+          "label": {
+            "en": "Make an\nInquiry",
+            "ar": "أرسل\nاستفسارك"
+          },
+          "target": "contact:events"
+        },
+        {
+          "icon": "people",
+          "label": {
+            "en": "Capacities\nat a Glance",
+            "ar": "السعة في\nلمحة"
+          },
+          "target": "view:infinity-4:capacityImages"
+        },
+        {
+          "icon": "floorplan",
+          "label": {
+            "en": "Explore the\nFloor Plan",
+            "ar": "استكشف\nمخطط القاعة"
+          },
+          "target": "view:infinity-4:floorPlanImages"
+        }
+      ],
+      "capacityImages": [
+        "assets/images/meetings/infinity-4-capacities.jpg"
+      ],
+      "floorPlanImages": [
+        "assets/images/meetings/infinity-4-floor-plan.jpg"
+      ],
+      "gallery": [
+        "assets/images/meetings/infinity-4-photo-01.jpg",
+        "assets/images/meetings/infinity-4-photo-02.jpg",
+        "assets/images/meetings/infinity-4-photo-03.jpg",
+        "assets/images/meetings/infinity-4-photo-04.jpg"
+      ],
+      "banner": {
+        "image": {
+          "en": "assets/images/banners/no-minimum-spend-en.jpg",
+          "ar": "assets/images/banners/no-minimum-spend-ar.jpg"
+        },
+        "target": "contact:events"
+      }
+    },
+    "mobius": {
+      "template": "meeting",
+      "hero": "assets/images/meetings/mobius-hero.jpg",
+      "title": {
+        "en": "Mobius\nBoardroom",
+        "ar": "غرفة اجتماعات\nموبيوس"
+      },
+      "headline": {
+        "en": "Meet • Discuss • Decide",
+        "ar": "اجتمع • ناقش • قرر"
+      },
+      "text": {
+        "en": "A refined boardroom designed for executive meetings, private discussions and focused decision-making.",
+        "ar": "غرفة اجتماعات راقية مصممة للاجتماعات التنفيذية والنقاشات الخاصة واتخاذ القرارات بتركيز."
+      },
+      "info": [
+        {
+          "icon": "guests",
+          "value": {
+            "en": "Up To\n14 Guests",
+            "ar": "تتسع لما يصل\nإلى 14 ضيفاً"
+          }
+        },
+        {
+          "icon": "size",
+          "value": {
+            "en": "41 Sq. M.\n441 Sq. Ft.",
+            "ar": "41 م²\n441 قدم²"
+          }
+        },
+        {
+          "icon": "av",
+          "value": {
+            "en": "State-Of-The-Art\nAudio Visual",
+            "ar": "أحدث التقنيات\nالسمعية والبصرية"
+          }
+        },
+        {
+          "icon": "catering",
+          "value": {
+            "en": "Tailored\nCatering Options",
+            "ar": ""
+          }
+        }
+      ],
+      "buttons": [
+        {
+          "icon": "inquiry",
+          "label": {
+            "en": "Make an\nInquiry",
+            "ar": "أرسل\nاستفسارك"
+          },
+          "target": "contact:events"
+        },
+        {
+          "icon": "people",
+          "label": {
+            "en": "Capacities\nat a Glance",
+            "ar": "السعة في\nلمحة"
+          },
+          "target": "view:mobius:capacityImages"
+        },
+        {
+          "icon": "floorplan",
+          "label": {
+            "en": "Explore the\nFloor Plan",
+            "ar": "استكشف\nمخطط القاعة"
+          },
+          "target": "view:mobius:floorPlanImages"
+        }
+      ],
+      "capacityImages": [
+        "assets/images/meetings/mobius-capacities.jpg"
+      ],
+      "floorPlanImages": [
+        "assets/images/meetings/mobius-floor-plan.jpg"
+      ],
+      "gallery": [
+        "assets/images/meetings/mobius-photo-01.jpg",
+        "assets/images/meetings/mobius-photo-02.jpg",
+        "assets/images/meetings/mobius-photo-03.jpg",
+        "assets/images/meetings/mobius-photo-04.jpg"
+      ],
+      "banner": {
+        "image": {
+          "en": "assets/images/banners/no-minimum-spend-en.jpg",
+          "ar": "assets/images/banners/no-minimum-spend-ar.jpg"
+        },
+        "target": "contact:events"
+      }
+    }
+  },
+  "contacts": {
+    "gourmet-yard": {
+      "headerImage": "assets/images/contacts/gourmet-yard-header.jpg",
+      "logo": "assets/brand/gourmet-yard-logo-white.svg",
+      "phone": "+971 4 438 0000",
+      "extension": "Ext. 4500",
+      "callNote": {
+        "en": "Speak with our\nrestaurant team.",
+        "ar": "تحدثوا مع فريق الفعاليات."
+      },
+      "qrImage": "assets/brand/whatsapp-qr.png",
+      "email": "DXBAI_FB@hilton.com"
+    },
+    "rio": {
+      "headerImage": "assets/images/contacts/rio-header.jpg",
+      "logo": "assets/brand/rio-logo-white.svg",
+      "phone": "+971 4 438 0000",
+      "extension": "Ext. 4500",
+      "callNote": {
+        "en": "Speak with our\nrestaurant team.",
+        "ar": "تحدثوا مع فريق الفعاليات."
+      },
+      "qrImage": "assets/brand/whatsapp-qr.png",
+      "email": "DXBAI_FB@hilton.com"
+    },
+    "drip": {
+      "headerImage": "assets/images/contacts/drip-header.jpg",
+      "logo": "assets/brand/drip-logo-white.svg",
+      "phone": "+971 4 438 0000",
+      "extension": "Ext. 4500",
+      "callNote": {
+        "en": "Speak with our\nrestaurant team.",
+        "ar": "تحدثوا مع فريق الفعاليات."
+      },
+      "qrImage": "assets/brand/whatsapp-qr.png",
+      "email": "DXBAI_FB@hilton.com"
+    },
+    "jones": {
+      "headerImage": "assets/images/contacts/jones-header.jpg",
+      "logo": "assets/brand/jones-logo-white.svg",
+      "phone": "+971 4 438 0000",
+      "extension": "Ext. 4500",
+      "callNote": {
+        "en": "Speak with the\nrestaurant team.",
+        "ar": "تحدثوا مع فريق الفعاليات."
+      },
+      "qrImage": "assets/brand/whatsapp-qr.png",
+      "email": "DXBAI_FB@hilton.com"
+    },
+    "rooms": {
+      "headerImage": "assets/images/contacts/rooms-header.jpg",
+      "logo": "",
+      "phone": "+971 4 438 0000",
+      "extension": "Ext. 4500",
+      "callNote": {
+        "en": "Speak with our\nreservation team.",
+        "ar": "تحدثوا مع فريق الفعاليات."
+      },
+      "qrImage": "assets/brand/whatsapp-qr.png",
+      "email": "DXBAI_FB@hilton.com"
+    },
+    "events": {
+      "headerImage": "assets/images/contacts/events-header.jpg",
+      "logo": "",
+      "phone": "+971 4 438 0000",
+      "extension": "Ext. 4500",
+      "callNote": {
+        "en": "Speak with our\nevents team.",
+        "ar": "تحدثوا مع فريق الفعاليات."
+      },
+      "qrImage": "assets/brand/whatsapp-qr.png",
+      "email": "DXBAI_FB@hilton.com"
+    },
+    "reception": {
+      "headerImage": "assets/images/contacts/reception-header.jpg",
+      "logo": "",
+      "phone": "+971 4 438 0000",
+      "extension": "Ext. 4500",
+      "callNote": {
+        "en": "Speak with our\nreception team.",
+        "ar": ""
+      },
+      "qrImage": "assets/brand/whatsapp-qr.png",
+      "email": "DXBAI_FB@hilton.com"
+    }
+  },
+  "offers": {
+    "dining-offers": [
+      "assets/images/offers/dining-offer-01.jpg",
+      "assets/images/offers/dining-offer-02.jpg",
+      "assets/images/offers/dining-offer-03.jpg",
+      "assets/images/offers/dining-offer-04.jpg",
+      "assets/images/offers/dining-offer-05.jpg",
+      "assets/images/offers/dining-offer-06.jpg",
+      "assets/images/offers/dining-offer-07.jpg",
+      "assets/images/offers/dining-offer-08.jpg"
+    ],
+    "pool-combo": [
+      "assets/images/offers/pool-combo-01.jpg",
+      "assets/images/offers/pool-combo-02.jpg",
+      "assets/images/offers/pool-combo-03.jpg"
+    ]
   }
 }
