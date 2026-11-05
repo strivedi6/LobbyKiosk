@@ -1,5 +1,5 @@
 {
-  "name": "Embassy Suites DXBAI Lobby Screen",
+  "name": "Interactive Lobby Screen",
   "short_name": "Lobby Screen",
   "id": "./",
   "start_url": "./",
@@ -8,7 +8,7 @@
   "display_override": ["fullscreen", "standalone"],
   "orientation": "portrait",
   "background_color": "#000000",
-  "theme_color": "#0D534D",
+  "theme_color": "#2F878A",
   "icons": [
     { "src": "assets/app-icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
     { "src": "assets/app-icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
