@@ -63,8 +63,10 @@
   async function getContent() {
     for (let i = 0; i < 3; i++) {
       try {
-        const r = await fetchT(SCRIPT + "?action=content&t=" + Date.now());
-        return await r.json();
+        const r = await fetchT(SCRIPT + "?action=content&t=" + Date.now(), {}, 90000);
+        const j = await r.json();
+        if (j && j.error) throw new Error("Google Sheet: " + j.error);
+        return j;
       } catch (e) { if (i === 2) throw e; await sleep(1500 * (i + 1)); }
     }
   }
@@ -137,11 +139,17 @@
     try {
       await gas("check", {}, 20000);
       sessionStorage.setItem("kiosk-pin", pin);
-      await start();
     } catch (e) {
       $("#loginMsg").textContent = e.message === "Wrong PIN" ? "Wrong PIN. Try again." : ((await diagnose()) || "Can't reach the Lobby Screen. Try again.");
-      pin = "";
-    } finally { $("#loginBtn").disabled = false; }
+      pin = ""; $("#loginBtn").disabled = false; return;
+    }
+    try {
+      await start();
+    } catch (e) {
+      lock("Signed in, but the content didn't load: " + (e.name === "AbortError" ? "the Google Sheet took too long. Wait a minute and try again." : e.message));
+      $("#loginBtn").disabled = false; return;
+    }
+    $("#loginBtn").disabled = false;
   }
   function lock(msg) {
     sessionStorage.removeItem("kiosk-pin"); pin = "";
@@ -802,7 +810,7 @@
   /* ================= boot ================= */
   ping();
   if (pin) {
-    gas("check", {}, 20000).then(start).catch(() => lock(""));
+    gas("check", {}, 20000).catch(() => { throw 0; }).then(() => start().catch((e) => lock("Signed in, but the content didn't load: " + (e.name === "AbortError" ? "the Google Sheet took too long. Wait a minute and try again." : e.message))), () => lock(""));
   } else {
     lock("");
   }
