@@ -24,7 +24,7 @@ const KIOSK = {
   BACKUP_FOLDER: 'Backups',
   BACKUP_EVERY_MIN: 15,
   TZ: 'Asia/Dubai',
-  HEADER: ['Key', 'English / Value', 'Arabic', 'Type'],
+  HEADER: ['Key', 'English / Value', 'Arabic', 'kiosk-v2'],   // last column is hidden; marks tabs this script wrote
   // content section -> tab name (order = order of keys in the content)
   TABS: [
     ['_about', 'About'], ['settings', 'Settings'], ['brand', 'Logos'], ['labels', 'Labels'],
@@ -54,12 +54,12 @@ function setup() {
   rm.getRange(1, 1).setFontWeight('bold').setFontSize(14);
   rm.setColumnWidth(1, 900);
   // if the sheet has no content yet, try to bring back the newest backup
-  if (!readContent_().pages) {
+  if (!valid_(readContent_())) {
     const b = newestBackup_();
-    if (b) writeContent_(b, Object.keys(b));
+    if (b) writeContent_(b, KIOSK.TABS.map(function (t) { return t[0]; }));
   }
   clearCache_();
-  Logger.log('Setup done. Root folder: ' + root.getName() + '. Content found: ' + (readContent_().pages ? 'yes' : 'no (the admin page will fill it on first sign-in)'));
+  Logger.log('Setup done. Root folder: ' + root.getName() + '. Content found: ' + (valid_(readContent_()) ? 'yes' : 'no (the admin page will fill it on first sign-in)'));
 }
 
 /* ---------------- web app ---------------- */
@@ -98,16 +98,17 @@ function getContent_() {
   const cached = cacheGet_();
   if (cached) return cached;
   let c = readContent_();
-  if (!c.pages) {
+  if (!valid_(c)) {
+    c = {};
     // nothing in the tabs yet: fall back to (and move in) the newest backup
     const b = newestBackup_();
     if (b) {
       const lock = LockService.getScriptLock();
-      if (lock.tryLock(20000)) { try { if (!readContent_().pages) writeContent_(b, Object.keys(b)); } finally { lock.releaseLock(); } }
+      if (lock.tryLock(20000)) { try { if (!valid_(readContent_())) writeContent_(b, KIOSK.TABS.map(function (t) { return t[0]; })); } finally { lock.releaseLock(); } }
       c = b;
     }
   }
-  if (c.pages) cachePut_(c);
+  if (valid_(c)) cachePut_(c);
   return c;
 }
 
@@ -131,6 +132,14 @@ function isMine_(sh) {
   if (!sh || sh.getLastRow() < 1) return false;
   const h = sh.getRange(1, 1, 1, 4).getDisplayValues()[0];
   return h[0] === KIOSK.HEADER[0] && h[3] === KIOSK.HEADER[3];
+}
+
+// complete content = everything the screen needs, with no gaps
+function valid_(c) {
+  if (!c || !c.pages || !c.settings || !c.labels || !c.home || !c.menu || !c.contacts || !c.offers) return false;
+  if (!Array.isArray(c.menu.tiles) || c.menu.tiles.some(function (t) { return !t; })) return false;
+  const s = JSON.stringify(c);
+  return s.indexOf('[null') < 0 && s.indexOf(',null') < 0;
 }
 
 function readContent_() {
@@ -209,22 +218,22 @@ function setPath_(root, path, r) {
 /* cache: content is ~130 KB, CacheService allows 100 KB per key, so split it */
 function cachePut_(c) {
   try {
-    const s = JSON.stringify(c), size = 90000, n = Math.ceil(s.length / size), map = { 'kc-n': String(n) };
-    for (let i = 0; i < n; i++) map['kc-' + i] = s.substr(i * size, size);
+    const s = JSON.stringify(c), size = 90000, n = Math.ceil(s.length / size), map = { 'kc2-n': String(n) };
+    for (let i = 0; i < n; i++) map['kc2-' + i] = s.substr(i * size, size);
     CacheService.getScriptCache().putAll(map, 600);
   } catch (e) {}
 }
 function cacheGet_() {
   try {
-    const cache = CacheService.getScriptCache(), n = Number(cache.get('kc-n'));
+    const cache = CacheService.getScriptCache(), n = Number(cache.get('kc2-n'));
     if (!n) return null;
-    const keys = []; for (let i = 0; i < n; i++) keys.push('kc-' + i);
+    const keys = []; for (let i = 0; i < n; i++) keys.push('kc2-' + i);
     const got = cache.getAll(keys);
-    let s = ''; for (let i = 0; i < n; i++) { if (got['kc-' + i] == null) return null; s += got['kc-' + i]; }
+    let s = ''; for (let i = 0; i < n; i++) { if (got['kc2-' + i] == null) return null; s += got['kc2-' + i]; }
     return JSON.parse(s);
   } catch (e) { return null; }
 }
-function clearCache_() { try { CacheService.getScriptCache().remove('kc-n'); } catch (e) {} }
+function clearCache_() { try { CacheService.getScriptCache().remove('kc2-n'); } catch (e) {} }
 
 /* ---------------- Drive folders ---------------- */
 function rootFolder_() {
@@ -265,7 +274,7 @@ function maybeBackup_(force) {
   const last = Number(props.getProperty('LAST_BACKUP') || 0);
   if (!force && Date.now() - last < KIOSK.BACKUP_EVERY_MIN * 60e3) return;
   const c = readContent_();
-  if (!c.pages) return;
+  if (!valid_(c)) return;
   const name = 'content-' + Utilities.formatDate(new Date(), KIOSK.TZ, 'yyyyMMdd-HHmmss') + '.json';
   sub_(rootFolder_(), KIOSK.BACKUP_FOLDER).createFile(name, JSON.stringify(c), 'application/json');
   props.setProperty('LAST_BACKUP', String(Date.now()));
@@ -285,15 +294,15 @@ function history_() {
 function parseBackup_(file) {
   try {
     const j = JSON.parse(file.getBlob().getDataAsString());
-    if (j && j.pages) return j;
-    if (j && j.content && j.content.pages) return j.content;
+    if (valid_(j)) return j;
+    if (j && valid_(j.content)) return j.content;
   } catch (e) {}
   return null;
 }
 
 function newestBackup_() {
   const files = backupFiles_();
-  for (let i = 0; i < Math.min(files.length, 10); i++) { const c = parseBackup_(files[i]); if (c) return c; }
+  for (let i = 0; i < Math.min(files.length, 40); i++) { const c = parseBackup_(files[i]); if (c) return c; }
   return null;
 }
 
@@ -304,7 +313,7 @@ function restore_(id) {
   lock.waitLock(30000);
   try {
     maybeBackup_(true);
-    writeContent_(c, Object.keys(c));
+    writeContent_(c, KIOSK.TABS.map(function (t) { return t[0]; }));
     clearCache_();
   } finally { lock.releaseLock(); }
   return { ok: true };

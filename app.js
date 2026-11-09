@@ -33,7 +33,8 @@
       if (CFG.scriptUrl) {
         try {
           const c = await fetchJSON(CFG.scriptUrl + (CFG.scriptUrl.includes("?") ? "&" : "?") + "action=content&t=" + Date.now());
-          if (c && c.pages && c.settings) return c;
+          if (complete(c)) return c;
+          console.warn("Sheet content incomplete, using the last good copy");
         } catch (e) { console.warn("Sheet unavailable", e); }
         // sheet unreachable: keep showing the last good copy if we have one
         const cached = readCache();
@@ -55,7 +56,8 @@
       return { version: hash(JSON.stringify(content)), content };
     }
   };
-  function readCache() { try { return JSON.parse(localStorage.getItem("kiosk-content")); } catch (e) { return null; } }
+  function complete(c) { return !!(c && c.pages && c.settings && c.labels && c.home && c.menu && c.contacts && c.offers); }
+  function readCache() { try { const c = JSON.parse(localStorage.getItem("kiosk-content")); return complete(c) ? c : null; } catch (e) { return null; } }
 
   function hash(str) {
     let h = 5381;
