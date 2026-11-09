@@ -102,7 +102,7 @@ function collectFiles_(folder, path, out) {
 
 function cleanupSheet_() {
   const id = PropertiesService.getScriptProperties().getProperty('SHEET_ID');
-  return SpreadsheetApp.getActive() || SpreadsheetApp.openById(id);
+  return id ? SpreadsheetApp.openById(id) : SpreadsheetApp.getActive();
 }
 
 // "Lobby Kiosk" folder: the one that holds the sheet, otherwise the first folder with that name

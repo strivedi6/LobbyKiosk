@@ -258,6 +258,24 @@
   };
   $("#historyClose").onclick = () => $("#history").classList.remove("on");
 
+  /* ================= clean up unused media ================= */
+  $("#cleanBtn").innerHTML = ic("trash") + "Clean up media";
+  $("#cleanBtn").onclick = async () => {
+    const b = $("#cleanBtn");
+    b.disabled = true; b.innerHTML = ic("refresh") + "Checking…";
+    try {
+      if (pendingSave()) await flushSave();
+      const p = await gas("cleanup", { preview: true }, 120000);
+      const msg = p.message.replace(/^PREVIEW \(nothing removed\): /, "");
+      if (/^0 unused/.test(msg)) { toast("Nothing to clean up. " + msg); return; }
+      if (!confirm("Found " + msg + "\n\nMove the unused files to the Drive Trash? (They can be restored from Drive › Trash for 30 days.)")) return;
+      b.innerHTML = ic("refresh") + "Cleaning…";
+      const r = await gas("cleanup", { preview: false }, 180000);
+      toast(r.message, 6000);
+    } catch (e) { toast("Clean-up didn't run: " + e.message, 7000); }
+    finally { b.disabled = false; b.innerHTML = ic("trash") + "Clean up media"; }
+  };
+
   /* ================= preview ================= */
   const frame = $("#preview");
   let previewReady = false, pt;
