@@ -2,7 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="admin.webmanifest">
+<meta name="theme-color" content="#0f2340">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Lobby Admin">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Interactive Lobby Screen – Admin</title>
 <link rel="icon" type="image/png" sizes="32x32" href="assets/app-icons/icon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="assets/app-icons/icon-192.png">
@@ -245,6 +251,70 @@
   .frame iframe { width: 1080px; height: 1920px; border: 0; transform: scale(.3648); transform-origin: 0 0; }
   .pnote { font-size: 12px; color: var(--muted); padding: 12px 6px 0; text-align: center; }
 
+  .mob { display: none !important; }
+  .nav-shade { display: none; }
+
+  /* ---------- phone / small tablet ---------- */
+  @media (max-width: 860px) {
+    .mob { display: inline-flex !important; }
+    body { font-size: 15px; }
+    #app.on { display: block; height: 100dvh; }
+    .main { height: 100dvh; grid-template-rows: auto 1fr; grid-template-columns: minmax(0, 1fr); width: 100vw; }
+    .work, #form, .panel, .tabs, .page-head, .item, .field { min-width: 0; max-width: 100%; }
+    .top > * { flex-shrink: 0; }
+    .top .saved { flex: 1 1 auto; flex-shrink: 1; }
+    .pcard .ph { align-items: center; }
+    .pcard h3 { font-size: 15px; }
+    .pcard .pbar button { width: 38px; height: 38px; }
+    /* pages menu slides in from the left */
+    .side { position: fixed; z-index: 30; left: 0; top: 0; bottom: 0; width: min(300px, 86vw); transform: translateX(-100%); transition: transform .25s ease; box-shadow: 0 0 40px rgba(0,0,0,.35); padding-top: env(safe-area-inset-top); }
+    body.nav-open .side { transform: none; }
+    body.nav-open .nav-shade { display: block; position: fixed; inset: 0; z-index: 29; background: rgba(15,35,64,.45); }
+    .nav-i { padding: 9px 10px 9px 6px; font-size: 14px; }
+    /* top bar: icons only */
+    .top { height: auto; min-height: 58px; padding: calc(8px + env(safe-area-inset-top)) 12px 8px; gap: 8px; }
+    .top .hbtn { font-size: 0; gap: 0; padding: 9px; }
+    .top .hbtn svg.i { width: 20px; height: 20px; }
+    .user { display: none; }
+    .saved { font-size: 12px; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
+    /* one column, no side preview */
+    .work { display: block; padding: 0 12px; overflow: hidden; height: 100%; }
+    #form { height: 100%; padding: 14px 0 calc(110px + env(safe-area-inset-bottom)); }
+    .page-head { margin: 4px 0 14px; gap: 10px; }
+    .page-head h2 { font-size: 30px; }
+    .page-head .tt { min-width: 0; flex-basis: 100%; }
+    .acts { width: 100%; }
+    .acts .hbtn { display: none; }               /* "View on Kiosk": use the Preview button instead */
+    .acts .btn-gold { margin-left: auto; padding: 10px 14px; }
+    .panel { padding: 16px 14px 4px; border-radius: 14px; }
+    .tab { padding: 14px 10px; font-size: 13.5px; }
+    .bi { grid-template-columns: 1fr; gap: 10px; }
+    input[type=text], input[type=number], textarea, select { font-size: 16px; }   /* stops iPhone zooming in */
+    .thumb { max-width: none; }
+    .media-grid { grid-template-columns: 1fr; }
+    .img-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .img-grid .arr-row .ctrls { opacity: 1; }
+    .img-grid .row .sbtn { padding: 6px 8px; }
+    .subcard { margin: 8px -14px 0; padding: 18px 14px 4px; }
+    .item-h { flex-wrap: wrap; row-gap: 8px; padding: 10px; }
+    .item-h .t { flex: 1 1 calc(100% - 120px); min-width: 0; }
+    .item-h .sched { order: 5; }
+    .item-h .ib { order: 6; width: 34px; height: 34px; }
+    .item-h .sched + .ib, .item-h .t + .ib { margin-left: auto; }
+    .item-h .chev { order: 4; }
+    .item-b { padding: 14px 12px 4px; }
+    /* preview opens full screen on request */
+    aside { display: none; }
+    body.preview-open aside { display: block; position: fixed; inset: 0; z-index: 35; background: rgba(15,35,64,.92); padding: calc(12px + env(safe-area-inset-top)) 12px 12px; overflow: auto; }
+    body.preview-open .pcard { max-width: 520px; margin: 0 auto; padding: 14px; }
+    .pcard .pn, .pnote { display: none; }
+    .frame { width: var(--fw, 320px); height: var(--fh, 569px); }
+    .frame iframe { transform: scale(var(--fs, .296)); }
+    #login .box { width: min(380px, 92vw); padding: 30px 22px 22px; }
+    .modal .card { width: 92vw; }
+    .toast { bottom: calc(20px + env(safe-area-inset-bottom)); }
+  }
+
   @media (max-width: 1280px) { .work { grid-template-columns: 1fr 360px; } .frame { width: 324px; height: 576px; } .frame iframe { transform: scale(.3); } }
 
   /* ---------- dialogs ---------- */
@@ -261,7 +331,7 @@
 
 <div id="login">
   <div class="box">
-    <div class="mark">Hotel logo on white pages</div>
+    <div class="mark">DXBAI</div>
     <h1>Lobby Kiosk Admin</h1>
     <p>Enter your PIN to continue</p>
     <input id="pin" type="password" inputmode="numeric" autocomplete="current-password" maxlength="4" placeholder="••••">
@@ -272,6 +342,7 @@
 </div>
 
 <div id="app">
+  <div class="nav-shade" id="navShade"></div>
   <div class="side">
     <div class="brand"><div class="mark">DXBAI</div><div class="sub">Lobby Kiosk Admin</div></div>
     <div class="props">
@@ -287,7 +358,9 @@
   </div>
   <div class="main">
     <div class="top">
+      <button class="hbtn mob" id="navBtn" title="Pages"></button>
       <span class="saved" id="saved"></span>
+      <button class="hbtn mob" id="previewBtn" title="Preview on the lobby screen"></button>
       <button class="hbtn" id="cleanBtn" title="Remove photos and videos in Drive that the screen no longer uses"></button>
       <button class="hbtn" id="historyBtn"></button>
       <div class="user"><div class="avatar">MA</div><span class="nm">Marketing Admin</span></div>
@@ -299,7 +372,7 @@
         <div class="pcard">
           <div class="ph">
             <div><h3><span class="dot ok" id="pdot"></span>Live Preview – Lobby Kiosk Screen</h3></div>
-            <div class="pbar"><button id="reloadPreview" title="Reload preview"></button></div>
+            <div class="pbar"><button id="reloadPreview" title="Reload preview"></button><button id="closePreview" class="mob" title="Close preview"></button></div>
           </div>
           <div class="pn">Shows how this page appears on the lobby screen. Tap inside to navigate.</div>
           <div class="frame"><iframe id="preview" src="index.html?preview=1"></iframe></div>
@@ -320,6 +393,6 @@
 <div class="toast" id="toast"></div>
 <script src="config.js"></script>
 <script src="icons.js"></script>
-<script src="admin.js?v=20261126c"></script>
+<script src="admin.js?v=20261126e"></script>
 </body>
 </html>

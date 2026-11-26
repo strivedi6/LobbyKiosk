@@ -127,6 +127,25 @@
   $("#historyBtn").innerHTML = ic("history") + "Previous versions";
   $("#lockBtn").innerHTML = ic("lock") + "Lock";
   $("#reloadPreview").innerHTML = ic("refresh");
+
+  /* ---------- phone layout: pages menu + preview on request ---------- */
+  $("#navBtn").innerHTML = '<svg class="i" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>';
+  $("#previewBtn").innerHTML = ic("eye");
+  $("#closePreview").innerHTML = ic("close");
+  $("#navBtn").onclick = () => document.body.classList.toggle("nav-open");
+  $("#navShade").onclick = () => document.body.classList.remove("nav-open");
+  function sizePreview() {
+    const w = Math.min(innerWidth - 52, 480), h = innerHeight - 110;
+    const sc = Math.min(w / 1080, h / 1920);
+    const f = document.querySelector(".frame");
+    f.style.setProperty("--fs", sc); f.style.setProperty("--fw", Math.floor(1080 * sc) + "px"); f.style.setProperty("--fh", Math.floor(1920 * sc) + "px");
+  }
+  $("#previewBtn").onclick = () => { sizePreview(); document.body.classList.add("preview-open"); gotoPreview(); };
+  $("#closePreview").onclick = () => document.body.classList.remove("preview-open");
+  addEventListener("resize", () => { if (document.body.classList.contains("preview-open")) sizePreview(); });
+
+  // installable as an app (Add to Home Screen)
+  if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
   addEventListener("online", ping);
   addEventListener("offline", () => setConn("bad", "No internet connection"));
 
@@ -481,6 +500,7 @@
 
   function select(s) {
     if (!s) return;
+    document.body.classList.remove("nav-open");
     current = s;
     highlight(s.key);
     const box = [...document.querySelectorAll(".nav-i")].find((a) => a.dataset.key === s.key);
