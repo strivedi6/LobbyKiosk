@@ -668,6 +668,59 @@
 
   /* ---------- images & uploads ---------- */
   const isLocal = (s) => /^assets\//.test(s);
+  /* ---------- PDF menus ----------
+     A PDF is turned into one sharp image per page right here in the browser
+     (2x the screen's resolution), then each page is uploaded like a photo. */
+  const PAGE_KEYS = /^(menuImages|capacityImages|floorPlanImages)$/;
+  const isPdf = (f) => f && (f.type === "application/pdf" || /\.pdf$/i.test(f.name));
+  let pdfLib = null;
+  function loadPdfJs() {
+    if (pdfLib) return pdfLib;
+    pdfLib = new Promise((res, rej) => {
+      const sc = document.createElement("script");
+      sc.src = "assets/vendor/pdfjs/pdf.min.js";
+      sc.onload = () => { window.pdfjsLib.GlobalWorkerOptions.workerSrc = "assets/vendor/pdfjs/pdf.worker.min.js"; res(window.pdfjsLib); };
+      sc.onerror = () => { pdfLib = null; rej(new Error("couldn't load the PDF reader")); };
+      document.head.appendChild(sc);
+    });
+    return pdfLib;
+  }
+  async function pdfToImages(f, status) {
+    const lib = await loadPdfJs();
+    const doc = await lib.getDocument({ data: new Uint8Array(await f.arrayBuffer()) }).promise;
+    if (doc.numPages > 40) throw new Error("this PDF has " + doc.numPages + " pages (max 40)");
+    const out = [], base = f.name.replace(/\.pdf$/i, "");
+    for (let n = 1; n <= doc.numPages; n++) {
+      status(`Reading page ${n} of ${doc.numPages}…`);
+      const page = await doc.getPage(n);
+      const w1 = page.getViewport({ scale: 1 }).width;
+      const vp = page.getViewport({ scale: 1914 / w1 });          // 2x the 957 px menu width = crisp text
+      const c = document.createElement("canvas");
+      c.width = Math.round(vp.width); c.height = Math.min(Math.round(vp.height), 8000);
+      const ctx = c.getContext("2d");
+      ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, c.width, c.height);
+      await page.render({ canvasContext: ctx, viewport: vp }).promise;
+      const blob = await new Promise((r) => c.toBlob(r, "image/jpeg", 0.92));
+      out.push(new File([blob], `${base}-page-${n}.jpg`, { type: "image/jpeg" }));
+      page.cleanup();
+    }
+    return out;
+  }
+  // upload a PDF's pages into a menu/plan list: replace one slot (index) or the whole list (index = null)
+  async function uploadPdfPages(f, listPath, index, status) {
+    const imgs = await pdfToImages(f, status);
+    const urls = [];
+    for (let i = 0; i < imgs.length; i++) {
+      status(`Uploading page ${i + 1} of ${imgs.length}…`);
+      const r = await gas("upload", { name: imgs[i].name, mime: imgs[i].type, data: await toBase64(imgs[i]), folder: "media", subfolder: listPath[0] === "pages" ? listPath[1] : listPath[0] }, 180000);
+      urls.push(r.url);
+    }
+    const arr = getAt(listPath);
+    if (index == null) arr.splice(0, arr.length, ...urls); else arr.splice(index, 1, ...urls);
+    markDirty(); renderForm();
+    toast(`${urls.length} page${urls.length > 1 ? "s" : ""} added from the PDF.`);
+  }
+
   function imagePicker(path, key) {
     const val = () => getAt(path) || "";
     const thumb = el("div", { class: "thumb" });
@@ -683,12 +736,17 @@
       thumb.append(m);
     };
     draw();
-    const file = el("input", { type: "file", accept: key === "src" ? "image/*,video/mp4,video/webm,video/quicktime" : "image/*", style: "display:none" });
+    const file = el("input", { type: "file", accept: key === "src" ? "image/*,video/mp4,video/webm,video/quicktime" : PAGE_KEYS.test(key) ? "image/*,application/pdf" : "image/*", style: "display:none" });
     file.onchange = async () => {
       const f = file.files[0]; file.value = "";
       if (!f) return;
       up.disabled = true; bar.style.display = "inline-block"; note.className = "note"; note.textContent = "Preparing…";
       try {
+        if (isPdf(f)) {
+          if (!PAGE_KEYS.test(key) || typeof path[path.length - 1] !== "number") throw new Error("PDFs can only be used for menu pages, capacity charts and floor plans");
+          await uploadPdfPages(f, path.slice(0, -1), path[path.length - 1], (t) => (note.textContent = t));
+          return;
+        }
         const ready = await prepareFile(f, (t) => (note.textContent = t));
         note.textContent = `Uploading ${(ready.size / 1048576).toFixed(1)} MB to Drive…`;
         const slideshow = path[0] === "ads" || path[0] === "offers";
@@ -810,7 +868,7 @@
         box.append(head, body);
         wrap.append(box);
       } else {
-        if (images) wrap.append(el("div", { class: "arr-row" }, el("div", {}, node(item, p, key)), el("span", { class: "num" }, i === 0 && path[0] !== "offers" ? "Featured" : String(i + 1)), el("div", { class: "ctrls" }, ...ctrls(i))));
+        if (images) wrap.append(el("div", { class: "arr-row" }, el("div", {}, node(item, p, key)), el("span", { class: "num" }, PAGE_KEYS.test(key) ? "Page " + (i + 1) : i === 0 && path[0] !== "offers" ? "Featured" : String(i + 1)), el("div", { class: "ctrls" }, ...ctrls(i))));
         else wrap.append(el("div", { class: "arr-row" }, el("div", {}, node(item, p, key)), ...ctrls(i)));
       }
     });
@@ -819,8 +877,23 @@
       a.push(a.length ? blankLike(a[a.length - 1]) : "");
       rerender(a.length - 1);
     } });
-    add.innerHTML = ic("plus") + "Add " + (key === "ads" ? "Slide" : images || /gallery|photos|menuImages|Images$/.test(key) || path[0] === "offers" ? "Image" : "Item");
+    add.innerHTML = ic("plus") + "Add " + (PAGE_KEYS.test(key) ? "Page" : key === "ads" ? "Slide" : images || /gallery|photos|menuImages|Images$/.test(key) || path[0] === "offers" ? "Image" : "Item");
     wrap.append(add);
+    if (PAGE_KEYS.test(key)) {
+      const pf = el("input", { type: "file", accept: "application/pdf", style: "display:none" });
+      const note = el("span", { class: "note" });
+      const pb = el("button", { class: "sbtn add primary", onclick: () => pf.click() });
+      pb.innerHTML = ic("upload") + "Upload PDF (replaces all pages)";
+      pf.onchange = async () => {
+        const f = pf.files[0]; pf.value = "";
+        if (!f) return;
+        if (getAt(path).some(Boolean) && !confirm("Replace all " + getAt(path).length + " current page(s) with the pages of this PDF?")) return;
+        pb.disabled = true;
+        try { await uploadPdfPages(f, path, null, (t) => (note.textContent = t)); }
+        catch (e) { note.textContent = "PDF failed: " + (e.name === "AbortError" ? "took too long. Try again." : e.message); note.className = "note bad"; pb.disabled = false; }
+      };
+      wrap.append(pb, note, pf);
+    }
     return wrap;
   }
 

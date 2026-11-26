@@ -442,6 +442,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .menu-pop .pages::-webkit-scrollbar { display: none; }
 .menu-pop .pages .ph { width: 957px; height: 1355px; background: #fff; }
 .menu-pop .pages .ph img { object-fit: contain; }
+/* menu / plan pages: full width, natural height, stacked for scrolling */
+.menu-pop .pages .ph:not(.missing) { height: auto; }
+.menu-pop .pages .ph:not(.missing) img { height: auto; display: block; }
 
 .offers-pop { width: 1080px; height: 1423px; border-radius: 0; background: transparent; overflow: visible; }
 .offers-pop .pop-close { right: 140px; top: -76px; }
