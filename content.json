@@ -976,7 +976,7 @@
           "en": "assets/images/banners/pool-banner-en.jpg",
           "ar": "assets/images/banners/pool-banner-ar.jpg"
         },
-        "target": "offers:pool-combo"
+        "target": "offers:special-collection"
       }
     },
     "gym": {
@@ -1085,7 +1085,7 @@
           "en": "assets/images/banners/pool-banner-en.jpg",
           "ar": "assets/images/banners/pool-banner-ar.jpg"
         },
-        "target": "offers:pool-combo"
+        "target": "offers:special-collection"
       }
     },
     "spa": {
@@ -1194,7 +1194,7 @@
           "en": "assets/images/banners/pool-banner-en.jpg",
           "ar": "assets/images/banners/pool-banner-ar.jpg"
         },
-        "target": "offers:pool-combo"
+        "target": "offers:special-collection"
       }
     },
     "kids-play": {
@@ -1303,7 +1303,7 @@
           "en": "assets/images/banners/pool-banner-en.jpg",
           "ar": "assets/images/banners/pool-banner-ar.jpg"
         },
-        "target": "offers:pool-combo"
+        "target": "offers:special-collection"
       }
     },
     "rooms": {
@@ -3746,7 +3746,7 @@
       "assets/images/offers/dining-offer-07.jpg",
       "assets/images/offers/dining-offer-08.jpg"
     ],
-    "pool-combo": [
+    "special-collection": [
       "assets/images/offers/pool-combo-01.jpg",
       "assets/images/offers/pool-combo-02.jpg",
       "assets/images/offers/pool-combo-03.jpg"

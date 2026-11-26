@@ -219,7 +219,22 @@
     Object.keys(o).forEach((k) => { if (!(k in out)) out[k] = o[k]; });
     return out;
   }
+  // "pool-combo" offers set is now "special-collection" (links on pages follow)
+  function renameOfferSet(c, from, to) {
+    if (!c.offers || !c.offers[from] || c.offers[to]) return;
+    const o = {};
+    Object.keys(c.offers).forEach((k) => { o[k === from ? to : k] = c.offers[k]; });
+    c.offers = o;
+    (function walk(v, parent, key) {
+      if (typeof v === "string") { if (v === "offers:" + from) parent[key] = "offers:" + to; else if (key === "offers" && v === from) parent[key] = to; }
+      else if (Array.isArray(v)) v.forEach((x, i) => walk(x, v, i));
+      else if (v && typeof v === "object") Object.keys(v).forEach((k) => walk(v[k], v, k));
+    })(c.pages);
+    (c.ads || []).forEach((a) => { if (a.target === "offers:" + from) a.target = "offers:" + to; });
+    (c.menu && c.menu.tiles || []).forEach((t) => { if (t.target === "offers:" + from) t.target = "offers:" + to; });
+  }
   function addScheduleFields(c) {
+    renameOfferSet(c, "pool-combo", "special-collection");
     if (Array.isArray(c.ads)) c.ads = c.ads.map(withSchedule);
     Object.keys(c.offers || {}).forEach((k) => {
       c.offers[k] = (c.offers[k] || []).map((x) => withSchedule(typeof x === "string" ? { image: x } : x));
@@ -565,7 +580,7 @@
     s.paths.forEach((p) => {
       const v = getAt(p);
       const key = p[p.length - 1];
-      if (p[0] === "offers") { tabs.push(section("Offer Images", arrayEditor(v, p, "gallery"), v.length)); return; }
+      if (p[0] === "offers") { tabs.push(section("Offer Images", offersEditor(v, p), v.length)); return; }
       if (Array.isArray(v)) { tabs.push(section(human(key), arrayEditor(v, p, key), v.length)); return; }
       const simple = el("div"), media = el("div", { class: "media-grid" }), nested = [];
       Object.keys(v).forEach((k) => {
@@ -925,6 +940,59 @@
       pill.className = "sched " + st.cls; pill.textContent = st.text;
       box.classList.toggle("off", st.cls !== "live");
     });
+  }
+
+  /* ---------- offers: pick images from another offers set ---------- */
+  const setName = (k) => k.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+  const offerImg = (x) => textOf(typeof x === "string" ? x : x && x.image);
+  function offersEditor(v, p) {
+    const wrap = el("div", {}, arrayEditor(v, p, "gallery"));
+    const others = Object.keys(content.offers).filter((k) => k !== p[1] && (content.offers[k] || []).some((x) => offerImg(x)));
+    others.forEach((k) => {
+      const b = el("button", { class: "sbtn add", onclick: () => pickOffers(k, p) });
+      b.innerHTML = ic("cards") + "Choose from " + setName(k);
+      wrap.append(b);
+    });
+    return wrap;
+  }
+  function pickOffers(fromKey, toPath) {
+    const target = getAt(toPath);
+    const have = new Set(target.map(offerImg));
+    const chosen = new Set();
+    const m = el("div", { class: "modal on picker" });
+    const grid = el("div", { class: "pick-grid" });
+    (content.offers[fromKey] || []).forEach((x, i) => {
+      const src = offerImg(x);
+      if (!src) return;
+      const st = scheduleStatus(x);
+      const already = have.has(src);
+      const card = el("button", { class: "pick" + (already ? " added" : "") },
+        el("img", { src, loading: "lazy" }),
+        el("span", { class: "pick-n" }, "Offer " + (i + 1)),
+        st ? el("span", { class: "sched " + st.cls }, st.text) : "",
+        already ? el("span", { class: "pick-tag" }, "Added") : el("span", { class: "pick-check" }, "✓"));
+      if (!already) card.onclick = () => { card.classList.toggle("on"); card.classList.contains("on") ? chosen.add(i) : chosen.delete(i); addBtn.textContent = chosen.size ? `Add ${chosen.size} selected` : "Add selected"; addBtn.disabled = !chosen.size; };
+      grid.append(card);
+    });
+    const close = () => m.remove();
+    const addBtn = el("button", { class: "btn-gold", disabled: "" }, "Add selected");
+    addBtn.onclick = () => {
+      [...chosen].sort((a, b) => a - b).forEach((i) => {
+        const x = content.offers[fromKey][i];
+        const o = typeof x === "string" ? { image: x } : x;
+        // same picture and the same dates as the dining offer (change them here if this collection runs differently)
+        target.push(withSchedule({ active: o.active !== false, startDate: o.startDate || "", endDate: o.endDate || "", image: o.image }));
+      });
+      close(); markDirty(); renderForm();
+      toast(`${chosen.size} offer${chosen.size > 1 ? "s" : ""} added from ${setName(fromKey)}.`);
+    };
+    m.append(el("div", { class: "card wide" },
+      el("h3", {}, "Choose from " + setName(fromKey)),
+      el("p", { style: "color:#707070;margin:0 0 14px" }, "Tap the offers to add. They keep their own dates, which you can change after adding."),
+      grid,
+      el("div", { class: "pick-foot" }, el("button", { class: "hbtn", onclick: close }, "Cancel"), addBtn)));
+    m.addEventListener("click", (e) => { if (e.target === m) close(); });
+    document.body.append(m);
   }
 
   /* ---------- pages ---------- */
