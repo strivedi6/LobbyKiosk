@@ -3,9 +3,9 @@
    - Fonts, icons and photos (incl. Google Drive images): cache first.
    - Google Sheet data and videos: always straight from the network
      (the app keeps its own copy of the data). */
-const VERSION = "kiosk-v2";
+const VERSION = "kiosk-v3";
 const SHELL = ["./", "index.html", "app.css", "app.js", "icons.js", "config.js", "content.json", "manifest.webmanifest"];
-const MAX_MEDIA = 400;
+const MAX_MEDIA = 1500;   // enough for every photo on the screen several times over
 
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(VERSION).then((c) => c.addAll(SHELL)).catch(() => {}).then(() => self.skipWaiting()));

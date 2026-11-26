@@ -668,9 +668,71 @@
     setTimeout(checkForUpdates, secs * 1000);
   }
 
+  /* ---------------- Download everything up front ----------------
+     Every photo, logo and icon in the content is fetched once when the
+     screen starts (and again for anything new after an update), so the
+     service worker keeps a copy on the screen and pages open instantly. */
+  const fetched = new Set();
+  const isVid = (u) => /\.(mp4|webm|mov|m4v)$/i.test(u) || /export=download/.test(u);
+  function mediaList(c) {
+    const out = new Set();
+    (function walk(v) {
+      if (typeof v === "string") { if (/^(assets\/|https?:\/\/)/.test(v) && !isVid(v)) out.add(v); }
+      else if (Array.isArray(v)) v.forEach(walk);
+      else if (v && typeof v === "object") Object.values(v).forEach(walk);
+    })(c);
+    return [...out].filter((u) => !fetched.has(u));
+  }
+  function loadOne(u) {
+    return new Promise((res) => {
+      const im = new Image(), t = setTimeout(done, 30000);
+      function done() { clearTimeout(t); im.onload = im.onerror = null; res(); }
+      im.onload = im.onerror = done;
+      im.decoding = "async"; im.src = u;
+    });
+  }
+  async function swReady(ms) {
+    if (!("serviceWorker" in navigator) || PREVIEW) return;
+    if (navigator.serviceWorker.controller) return;
+    await Promise.race([
+      new Promise((r) => navigator.serviceWorker.addEventListener("controllerchange", r, { once: true })),
+      new Promise((r) => setTimeout(r, ms))
+    ]);
+  }
+  let preloading = null;
+  async function preloadAll(c, onProgress) {
+    if (PREVIEW) return;
+    if (preloading) await preloading;
+    const list = mediaList(c);
+    if (!list.length) return;
+    preloading = (async () => {
+      await swReady(6000);
+      let done = 0, i = 0;
+      const worker = async () => { while (i < list.length) { const u = list[i++]; await loadOne(u); fetched.add(u); done++; if (onProgress) onProgress(done, list.length); } };
+      await Promise.all([worker(), worker(), worker(), worker(), worker(), worker()]);
+    })();
+    try { await preloading; } finally { preloading = null; }
+  }
+  // first launch on this screen: show progress while everything downloads
+  async function firstLaunchDownload(c) {
+    let first = false;
+    try { first = !localStorage.getItem("kiosk-preloaded"); } catch (e) {}
+    if (!first) { preloadAll(c); return; }
+    stage.innerHTML = `<div style="position:absolute;inset:0;background:#0D534D;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font:600 34px/1.4 sans-serif;text-align:center">
+      <div>Preparing the screen…</div><div id="pl-n" style="font-size:26px;opacity:.75;margin-top:14px">Downloading photos</div>
+      <div style="width:600px;height:10px;border-radius:5px;background:rgba(255,255,255,.2);margin-top:36px;overflow:hidden"><i id="pl-bar" style="display:block;height:100%;width:0;background:#fff;transition:width .3s"></i></div></div>`;
+    const n = stage.querySelector("#pl-n"), bar = stage.querySelector("#pl-bar");
+    await Promise.race([
+      preloadAll(c, (d, t) => { n.textContent = `Downloading photos ${d} of ${t}`; bar.style.width = (100 * d / t) + "%"; }),
+      new Promise((r) => setTimeout(r, 180000))          // never hold the screen more than 3 minutes
+    ]);
+    try { localStorage.setItem("kiosk-preloaded", String(Date.now())); } catch (e) {}
+  }
+
   function apply(content, keepPlace) {
     state.content = content;
     try { localStorage.setItem("kiosk-content", JSON.stringify(content)); } catch (e) {}
+    if (keepPlace) preloadAll(content);   // after an update: fetch anything new in the background
     if (!keepPlace) return;
     // stay on the same screen if it still exists
     state.stack = state.stack.filter((id) => id === "home" || id === "menu" || content.pages[id]);
@@ -718,6 +780,7 @@
     catch (e) { content = readCache(); }
     if (!content) { stage.innerHTML = '<div style="color:#fff;font:40px sans-serif;padding:80px">Waiting for content…</div>'; setTimeout(boot, 5000); return; }
     apply(content, false);
+    await firstLaunchDownload(content);
     state.lang = params.get("lang") || content.settings.defaultLanguage || "en";
     const startPage = params.get("page");
     state.stack = startPage && startPage !== "home" ? (startPage === "menu" ? ["home", "menu"] : ["home", "menu", startPage]) : ["home"];
