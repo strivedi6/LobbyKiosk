@@ -84,6 +84,17 @@
   const L = (key) => T(state.content.labels[key]);
   const isPath = (s) => typeof s === "string" && /[./]/.test(s);
 
+  /* Scheduling: an item shows when "Show on screen" is on and today is
+     within its "Show from" / "Show until" dates (empty = no limit). */
+  function today() { const d = new Date(); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+  function live(x) {
+    if (!x || typeof x !== "object") return !!x;
+    if (x.active === false) return false;
+    const t = today(), from = String(x.startDate || "").slice(0, 10), until = String(x.endDate || "").slice(0, 10);
+    return !(from && t < from) && !(until && t > until);
+  }
+  const offerImages = (id) => ((state.content.offers || {})[id] || []).filter(live).map((x) => (typeof x === "string" ? x : x.image)).filter((x) => tx(x));
+
   function icon(name, cls = "") {
     if (!name) return "";
     if (isPath(name)) return `<span class="ico ${cls}"><img src="${esc(name)}" alt=""></span>`;
@@ -155,7 +166,7 @@
   const Screens = {
     home() {
       const c = state.content, h = c.home;
-      const ads = (c.ads || []).filter((a) => a.active !== false && tx(a.src));
+      const ads = (c.ads || []).filter((a) => live(a) && tx(a.src));
       const slides = ads.map((a, i) => {
         const s = tx(a.src);
         const isVideo = a.type === "video" || /\.(mp4|webm|mov|m4v)$/i.test(s);
@@ -202,7 +213,7 @@
     list(p) {
       const feature = p.cardStyle !== "venue";
       if (p.cardStyle === "attraction") return Screens.attractions(p);
-      const cards = (p.items || []).map((it) => {
+      const cards = (p.items || []).filter(live).map((it) => {
         const meta = (it.meta || []).slice(0, 2).map((m) => `<div><span class="dot">${icon(m.icon)}</span>${T(m.text)}</div>`).join("");
         const top = feature
           ? `<div class="c-title">${T(it.title)}</div>`
@@ -228,7 +239,7 @@
 
     attractions(p) {
       const lab = ["distanceFromHotel", "openingTime", "perfectFor"];
-      const cards = (p.items || []).map((it) => {
+      const cards = (p.items || []).filter(live).map((it) => {
         const meta = (it.meta || []).slice(0, 3).map((m, i) => `<div class="am">${icon(m.icon)}<div><span>${L(lab[i])}</span><b>${T(m.text)}</b></div></div>`).join("");
         return `<div class="card attraction" ${it.target ? `data-go="${esc(it.target)}"` : ""}>
           ${pic(it.image)}
@@ -378,7 +389,7 @@
       return `<div class="pop menu-pop"><button class="pop-close" data-act="close">${icon("close")}</button><div class="pages">${pages}</div></div>`;
     },
     offers(id) {
-      const imgs = state.content.offers[id] || [];
+      const imgs = offerImages(id);
       return `<div class="pop offers-pop"><button class="pop-close" data-act="close">${icon("close")}</button>
         <div class="rail">${imgs.map((m, i) => `<div class="slide${i ? "" : " on"}" data-i="${i}">${pic(m)}</div>`).join("")}</div>
         ${imgs.length > 1 ? `<div class="dots">${imgs.map((_, i) => `<i class="${i ? "" : "on"}"></i>`).join("")}</div>` : ""}</div>`;
@@ -536,7 +547,7 @@
   function startAds() {
     const slides = [...stage.querySelectorAll(".home:not(.leaving) .ad")];
     if (!slides.length) return;
-    const ads = (state.content.ads || []).filter((a) => a.active !== false && tx(a.src));
+    const ads = (state.content.ads || []).filter((a) => live(a) && tx(a.src));
     const show = (i) => {
       state.adIndex = i;
       slides.forEach((s, j) => s.classList.toggle("on", i === j));
@@ -565,6 +576,7 @@
     if (!target) return;
     const ci = target.indexOf(":");
     const [kind, id] = ci > 0 ? [target.slice(0, ci), target.slice(ci + 1)] : ["page", target];
+    if (kind === "offers" && !offerImages(id).length) return;   // nothing live right now
     if (kind === "contact" || kind === "offers" || kind === "menu" || kind === "view") {
       openOverlay(kind, id);
       return;
@@ -638,7 +650,9 @@
 
   /* ---------------- Live updates from the Mac ---------------- */
   const offline = document.getElementById("offline");
+  let shownDay = today();
   async function checkForUpdates() {
+    if (today() !== shownDay && state.content) { shownDay = today(); if (!state.overlay) render("none"); }
     try {
       const v = await DataSource.version();
       offline.classList.remove("show");

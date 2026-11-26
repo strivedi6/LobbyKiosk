@@ -219,7 +219,13 @@
   .item.open > .item-h { border-bottom: 1px solid var(--line); border-radius: 12px 12px 0 0; }
   .item-b { display: none; padding: 18px 16px 4px; }
   .item.open > .item-b { display: block; animation: fadeUp .2s ease; }
-  .item.off .t { opacity: .5; text-decoration: line-through; }
+  .item.off .t { opacity: .55; }
+  .item-h .ith { width: 44px; height: 32px; border-radius: 6px; background: #eee center/cover no-repeat; flex: none; }
+  .sched { font-size: 11px; font-weight: 700; border-radius: 9px; padding: 2px 9px; white-space: nowrap; flex: none; }
+  .sched.live { background: #e3f5ec; color: var(--ok); }
+  .sched.soon { background: #fff3dc; color: var(--warn); }
+  .sched.ended, .sched.off { background: #f1f2f5; color: var(--muted); }
+  input[type=date] { width: 100%; max-width: 240px; padding: 10px 12px; border: 1px solid var(--line-2); border-radius: 10px; background: #fff; }
   .ib { border: 1px solid var(--line-2); background: #fff; border-radius: 7px; width: 28px; height: 28px; font-size: 13px; line-height: 1; display: inline-flex; align-items: center; justify-content: center; }
   .ib:hover { border-color: #cdbfae; }
   .ib.danger { color: var(--bad); }
@@ -314,6 +320,6 @@
 <div class="toast" id="toast"></div>
 <script src="config.js"></script>
 <script src="icons.js"></script>
-<script src="admin.js?v=20261109c"></script>
+<script src="admin.js?v=20261126a"></script>
 </body>
 </html>

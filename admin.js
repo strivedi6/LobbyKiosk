@@ -173,6 +173,7 @@
     }
     content = c;
     TABS.forEach((keys, i) => { saved[i] = seeded ? "" : tabJSON(i); });
+    addScheduleFields(content);
     // unsaved work from an earlier session?
     try {
       const d = JSON.parse(localStorage.getItem("kiosk-draft") || "null");
@@ -189,6 +190,37 @@
     else setSaved("All changes saved", "ok");
     lastSync = Date.now();
     ping();
+  }
+
+  /* ================= scheduling fields =================
+     Slideshow slides, offer images and nearby-attraction cards get
+     "Show on screen", "Show from" and "Show until". */
+  function withSchedule(o) {
+    const out = { active: o.active !== false, startDate: o.startDate || "", endDate: o.endDate || "" };
+    Object.keys(o).forEach((k) => { if (!(k in out)) out[k] = o[k]; });
+    return out;
+  }
+  function addScheduleFields(c) {
+    if (Array.isArray(c.ads)) c.ads = c.ads.map(withSchedule);
+    Object.keys(c.offers || {}).forEach((k) => {
+      c.offers[k] = (c.offers[k] || []).map((x) => withSchedule(typeof x === "string" ? { image: x } : x));
+    });
+    Object.values(c.pages || {}).forEach((p) => {
+      if (p.cardStyle === "attraction" && Array.isArray(p.items)) p.items = p.items.map(withSchedule);
+    });
+  }
+  const ymd = (d) => d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+  const niceDate = (s) => { const d = new Date(s + "T00:00:00"); return isNaN(d) ? s : d.toLocaleDateString("en-GB", { day: "numeric", month: "short" }); };
+  // what the screen does with this item today
+  function scheduleStatus(it) {
+    if (!it || typeof it !== "object" || !("active" in it)) return null;
+    if (it.active === false) return { cls: "off", text: "Hidden" };
+    const t = ymd(new Date()), from = it.startDate || "", until = it.endDate || "";
+    if (from && until && from > until) return { cls: "ended", text: "Check dates" };
+    if (from && t < from) return { cls: "soon", text: "Starts " + niceDate(from) };
+    if (until && t > until) return { cls: "ended", text: "Ended " + niceDate(until) };
+    if (until) return { cls: "live", text: "Live until " + niceDate(until) };
+    return { cls: "live", text: "Live" };
   }
 
   /* ================= autosave ================= */
@@ -322,7 +354,7 @@
     features: "Feature cards", highlights: "Room highlights", usps: "Bottom strip", items: "Cards", sections: "Sections", tiles: "Menu tiles",
     target: "Opens", reservationContact: "“Make a reservation” opens", bookContact: "“Book now” opens", offers: "“View offers” opens",
     secondButton: "Middle button", banner: "Banner", callNote: "Text under phone number", phone: "Phone number", extension: "Extension", email: "Email",
-    active: "Show on screen", type: "Type", seconds: "Seconds on screen", icon: "Icon",
+    active: "Show on screen", startDate: "Show from", endDate: "Show until", type: "Type", seconds: "Seconds on screen", icon: "Icon",
     idleSeconds: "Back to home screen after (seconds without a touch)", adImageSeconds: "Seconds per photo slide",
     checkMinutes: "Screen checks for updates every (minutes)", defaultLanguage: "Default language", ads: "Slideshow (top 70% of the home screen)",
     home: "Touch area (bottom 30%)", labels: "Button & label text", settings: "Settings", brand: "Logos"
@@ -330,7 +362,9 @@
   const HINTS = {
     target: "Where a tap goes: a page, a contact pop-up or an offers pop-up.",
     seconds: "0 = use the default. Videos play to the end when 0.",
-    headline: "Line breaks are kept."
+    headline: "Line breaks are kept.",
+    startDate: "Leave empty to show it straight away.",
+    endDate: "Leave empty to keep showing it. It disappears the day after this date."
   };
   const RECO = {
     hero: "Recommended: 1080 × 900 px or larger", heroLogo: "Transparent PNG or SVG", logo: "Transparent PNG or SVG",
@@ -570,10 +604,15 @@
     if (key === "icon") return iconPicker(path);
     if (isBi(v)) return IMAGE_KEYS.test(key) ? biImage(path, key) : biText(v, path);
     if (Array.isArray(v)) return arrayEditor(v, path, key);
-    if (typeof v === "boolean") { const c = el("input", { type: "checkbox" }); c.checked = v; c.onchange = () => { setAt(path, c.checked); markDirty(); }; return el("label", {}, c, " Yes"); }
+    if (typeof v === "boolean") { const c = el("input", { type: "checkbox" }); c.checked = v; c.onchange = () => { setAt(path, c.checked); markDirty(); refreshItemStatus(); }; return el("label", {}, c, " Yes"); }
     if (typeof v === "number") { const i = el("input", { type: "number", value: v, min: 0 }); i.oninput = () => { setAt(path, Number(i.value) || 0); markDirty(); }; return i; }
+    if (key === "startDate" || key === "endDate") {
+      const d = el("input", { type: "date", value: v || "" });
+      d.oninput = () => { setAt(path, d.value); markDirty(); refreshItemStatus(); };
+      return d;
+    }
     if (typeof v === "string") {
-      if (IMAGE_KEYS.test(key) || path[0] === "offers") return imagePicker(path, key);
+      if (IMAGE_KEYS.test(key) || (path[0] === "offers" && path.length === 3)) return imagePicker(path, key);
       const opts = selectOptions(key, path);
       if (opts) return selectBox(opts, path);
       return textInput(path, v);
@@ -749,11 +788,18 @@
     arr.forEach((item, i) => {
       const p = path.concat(i);
       if (objects) {
-        const title = textOf(item.title) || textOf(item.label) || textOf(item.text) || (item.src ? (textOf(item.src).split("/").pop() || "Slide") : "") || textOf(item.value) || human(key) + " " + (i + 1);
-        const box = el("div", { class: "item" + (i === openIndex ? " open" : "") + (item.active === false ? " off" : "") });
+        const title = path[0] === "ads" ? "Slide " + (i + 1) : path[0] === "offers" ? "Offer image " + (i + 1)
+          : textOf(item.title) || textOf(item.label) || textOf(item.text) || textOf(item.value) || human(key) + " " + (i + 1);
+        const st = scheduleStatus(item);
+        const box = el("div", { class: "item" + (i === openIndex ? " open" : "") + (st && st.cls !== "live" ? " off" : "") });
+        box.dataset.path = JSON.stringify(p);
         const chev = el("span", { class: "chev" }, icEl("chevronRight"));
         chev.firstChild.style.cssText = "width:16px;height:16px";
-        const head = el("div", { class: "item-h" }, el("span", { class: "num" }, String(i + 1)), el("span", { class: "t" }, one(title).slice(0, 90)), ...ctrls(i), chev);
+        const pic = textOf(item.src) || textOf(item.image);
+        const thumb = pic && !/\.(mp4|webm|mov|m4v)$/i.test(pic) && !/export=download/.test(pic)
+          ? el("span", { class: "ith", style: `background-image:url('${pic.replace(/'/g, "%27")}')` }) : "";
+        const pill = st ? el("span", { class: "sched " + st.cls }, st.text) : "";
+        const head = el("div", { class: "item-h" }, el("span", { class: "num" }, String(i + 1)), thumb, el("span", { class: "t" }, one(title).slice(0, 90)), pill, ...ctrls(i), chev);
         const body = el("div", { class: "item-b" });
         head.onclick = () => {
           const willOpen = !box.classList.contains("open");
@@ -776,6 +822,16 @@
     add.innerHTML = ic("plus") + "Add " + (key === "ads" ? "Slide" : images || /gallery|photos|menuImages|Images$/.test(key) || path[0] === "offers" ? "Image" : "Item");
     wrap.append(add);
     return wrap;
+  }
+
+  function refreshItemStatus() {
+    document.querySelectorAll(".item[data-path]").forEach((box) => {
+      const st = scheduleStatus(getAt(JSON.parse(box.dataset.path)));
+      const pill = box.querySelector(":scope > .item-h .sched");
+      if (!st || !pill) return;
+      pill.className = "sched " + st.cls; pill.textContent = st.text;
+      box.classList.toggle("off", st.cls !== "live");
+    });
   }
 
   /* ---------- pages ---------- */
