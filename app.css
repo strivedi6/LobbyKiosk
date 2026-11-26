@@ -432,6 +432,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .contact-pop .col .note { margin-top: 30px; font: 400 20px/20px var(--f-ui); white-space: pre-line; }
 .contact-pop .col .mail { margin-top: 30px; font: 400 20px/20px var(--f-ui); }
 .contact-pop .col .qr { width: 137px; height: 137px; margin: 18px auto 0; background: #fff; }
+.contact-pop .col .qr > img { object-fit: contain; }   /* never crop a QR code */
 .contact-pop .col .qr.missing::after { font-size: 11px; }
 .contact-pop .col .qrnote { margin-top: 8px; font: 400 20px/20px var(--f-ui); }
 .contact-pop[dir=rtl] .col { direction: rtl; }
